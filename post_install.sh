@@ -14,7 +14,7 @@ echo ${postgres_password}
 echo ${postgres_server}
 echo ${postgres_dbname}
 
-# psql --help
+psql --help
 
 exit
 
