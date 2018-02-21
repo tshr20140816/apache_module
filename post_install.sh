@@ -90,6 +90,7 @@ cd /tmp
 # wget http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.29.tar.gz
 tar xf httpd-2.4.29.tar.gz
 cd httpd-2.4.29
+./configure --help
 # ./configure --prefix=/tmp/usr2 \
 #  --with-apr=/tmp/usr --enable-ssl --enable-http2 --enable-proxy --enable-proxy-http2 --with-nghttp2=/tmp/usr
 ./configure --prefix=/tmp/usr2 \
