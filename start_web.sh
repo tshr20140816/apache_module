@@ -5,6 +5,10 @@ set -x
 export TZ=JST-9
 
 ls -lang
+
+chmod +x libbrotlicommon.so.1
+chmod +x libbrotlienc.so.1
+
 mkdir -p /tmp/usr/lib
 cp libnghttp2.so.14 /tmp/usr/lib/
 cp libbrotlicommon.so.1 /tmp/usr/lib/
