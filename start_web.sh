@@ -10,5 +10,6 @@ cp libnghttp2.so.14 /tmp/usr/lib/
 
 ldd ./mod_http2.so
 ldd ./mod_proxy_http2.so
+ldd ./mod_brotli.so
 
 vendor/bin/heroku-php-apache2 -C apache.conf www
