@@ -4,7 +4,7 @@ set -x
 
 tmp1=${DATABASE_URL}
 
-echo ${DATABASE_URL} | grep -o '/.\+@'
+echo ${DATABASE_URL} | grep -o '/.\+@' | grep -o ':.+'
 
 exit
 
