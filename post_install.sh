@@ -63,7 +63,7 @@ tar xf cmake-3.10.2-Linux-x86_64.tar.gz -C ./usr --strip=1
 cd /tmp
 
 cd brotli
-./configure-cmake --prefix=/tmp/usr
+LDFLAGS="-L/tmp/usr/lib -Wl,-rpath /tmp/usr/lib" ./configure-cmake --prefix=/tmp/usr
 make -j2
 make install
 
