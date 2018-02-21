@@ -63,7 +63,7 @@ tar xf cmake-3.10.2-Linux-x86_64.tar.gz -C ./usr --strip=1
 cd /tmp
 
 cd brotli
-LDFLAGS="-L/tmp/usr/lib -Wl,-rpath /tmp/usr/lib" ./configure-cmake --prefix=/tmp/usr
+./configure-cmake --prefix=/tmp/usr
 make -j2
 make install
 
@@ -92,7 +92,7 @@ tar xf httpd-2.4.29.tar.gz
 cd httpd-2.4.29
 # ./configure --prefix=/tmp/usr2 \
 #  --with-apr=/tmp/usr --enable-ssl --enable-http2 --enable-proxy --enable-proxy-http2 --with-nghttp2=/tmp/usr
-./configure --prefix=/tmp/usr2 \
+LDFLAGS="-L/tmp/usr/lib -Wl,-rpath /tmp/usr/lib" ./configure --prefix=/tmp/usr2 \
  --with-apr=/tmp/usr --enable-ssl --enable-http2 --enable-proxy --enable-proxy-http2 --with-nghttp2=/tmp/usr \
  --enable-brotli --with-brotli=/tmp/usr --enable-mods-shared=few
 time make -j$(grep -c -e processor /proc/cpuinfo)
