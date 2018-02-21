@@ -24,7 +24,6 @@ DROP TABLE T_HOGE;
 _EOF
 cat result
 
-exit
 
 date
 start_date=$(date)
