@@ -18,6 +18,8 @@ openssl version
 
 wget http://www.digip.org/jansson/releases/jansson-2.11.tar.bz2 &
 wget https://github.com/nghttp2/nghttp2/releases/download/v1.30.0/nghttp2-1.30.0.tar.xz &
+wget https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.tar.gz &
+git clone --depth 1 https://github.com/google/brotli &
 wget http://ftp.tsukuba.wide.ad.jp/software/apache//apr/apr-1.6.3.tar.bz2 &
 wget http://ftp.tsukuba.wide.ad.jp/software/apache//apr/apr-util-1.6.1.tar.bz2 &
 wget http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.29.tar.gz &
