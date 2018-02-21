@@ -4,7 +4,9 @@ set -x
 
 tmp1=${DATABASE_URL}
 
-echo ${DATABASE_URL} | grep -o '/.\+@' | grep -o ':.\+' | sed -e 's/://' | sed -e 's/@//'
+postgres_password=$(echo ${DATABASE_URL} | grep -o '/.\+@' | grep -o ':.\+' | sed -e 's/://' | sed -e 's/@//'
+
+echo ${postgres_password}
 
 exit
 
