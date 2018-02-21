@@ -2,6 +2,11 @@
 
 set -x
 
+printenv
+
+
+exit
+
 date
 start_date=$(date)
 
