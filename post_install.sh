@@ -58,6 +58,17 @@ make install
 
 cd /tmp
 
+tar xf cmake-3.10.2-Linux-x86_64.tar.gz -C ./usr --strip=1 
+
+cd /tmp
+
+cd brotli
+./configure-cmake --prefix=/tmp/usr
+make -j2
+make install
+
+cd /tmp
+
 # wget http://ftp.tsukuba.wide.ad.jp/software/apache//apr/apr-1.6.3.tar.bz2
 tar xf apr-1.6.3.tar.bz2
 cd apr-1.6.3
