@@ -8,8 +8,8 @@ ls -lang
 
 export LD_LIBRARY_PATH=/tmp/usr/lib
 
-chmod +x libbrotlicommon.so.1
-chmod +x libbrotlienc.so.1
+# chmod +x libbrotlicommon.so.1
+# chmod +x libbrotlienc.so.1
 
 mkdir -p /tmp/usr/lib
 cp libnghttp2.so.14 /tmp/usr/lib/
