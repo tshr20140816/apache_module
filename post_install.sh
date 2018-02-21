@@ -94,7 +94,7 @@ cd httpd-2.4.29
 #  --with-apr=/tmp/usr --enable-ssl --enable-http2 --enable-proxy --enable-proxy-http2 --with-nghttp2=/tmp/usr
 ./configure --prefix=/tmp/usr2 \
  --with-apr=/tmp/usr --enable-ssl --enable-http2 --enable-proxy --enable-proxy-http2 --with-nghttp2=/tmp/usr \
- --enable-brotli --with-brotli=/tmp/usr --enable-mods-shared='proxy_http2_module'
+ --enable-brotli --with-brotli=/tmp/usr --enable-mods-shared=few
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install
 
