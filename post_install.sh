@@ -7,10 +7,12 @@ tmp1=${DATABASE_URL}
 postgres_user=$(echo ${DATABASE_URL} | awk -F':' '{print $2}' | sed -e 's/\///g')
 postgres_password=$(echo ${DATABASE_URL} | grep -o '/.\+@' | grep -o ':.\+' | sed -e 's/://' | sed -e 's/@//')
 postgres_server=$(echo ${DATABASE_URL} | awk -F'@' '{print $2}' | awk -F':' '{print $1}')
+postgres_dbname=$(echo ${DATABASE_URL} | awk -F'/' '{print $NF}')
 
 echo ${postgres_user}
 echo ${postgres_password}
 echo ${postgres_server}
+echo ${postgres_dbname}
 
 # psql --help
 
