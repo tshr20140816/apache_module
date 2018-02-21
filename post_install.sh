@@ -94,13 +94,14 @@ cd httpd-2.4.29
 #  --with-apr=/tmp/usr --enable-ssl --enable-http2 --enable-proxy --enable-proxy-http2 --with-nghttp2=/tmp/usr
 ./configure --prefix=/tmp/usr2 \
  --with-apr=/tmp/usr --enable-ssl --enable-http2 --enable-proxy --enable-proxy-http2 --with-nghttp2=/tmp/usr \
- --enable-brotli --with-brotli=/tmp/usr
+ --enable-brotli --with-brotli=/tmp/usr --enable-mods-shared=few
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install
 
 ls -Rlang /tmp/usr2
 
-ldd /tmp/usr2/modules/mod_http2.so
+ldd /tmp/usr2/modules/mod_brotli.so
+# ldd /tmp/usr2/modules/mod_http2.so
 ldd /tmp/usr2/modules/mod_proxy_http2.so
 
 cp /tmp/usr/lib/libnghttp2.so.14 ${HOME2}/
