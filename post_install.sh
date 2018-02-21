@@ -8,7 +8,7 @@ postgres_password=$(echo ${DATABASE_URL} | grep -o '/.\+@' | grep -o ':.\+' | se
 
 echo ${postgres_password}
 
-echo ${DATABASE_URL} | awk -F':' '{print $2}'
+echo ${DATABASE_URL} | awk -F':' '{print $2}' | sed -e 's/://'
 
 exit
 
