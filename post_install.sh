@@ -18,7 +18,7 @@ export PGPASSWORD=${postgres_password}
 
 psql --help
 
-psql -q -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > result << _EOF
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > result << _EOF
 CREATE TABLE T_HOGE(K1 INT);
 DROP TABLE T_HOGE;
 _EOF
