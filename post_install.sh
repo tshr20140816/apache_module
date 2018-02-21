@@ -107,10 +107,12 @@ ldd /tmp/usr2/modules/mod_proxy_http2.so
 cp /tmp/usr/lib/libnghttp2.so.14 ${HOME2}/
 cp /tmp/usr2/modules/mod_proxy_http2.so ${HOME2}/
 cp /tmp/usr2/modules/mod_http2.so ${HOME2}/
+cp /tmp/usr2/modules/mod_brotli.so ${HOME2}/
 
 cp /tmp/usr/lib/libnghttp2.so.14 ${HOME2}/www/
 cp /tmp/usr2/modules/mod_proxy_http2.so ${HOME2}/www/
 cp /tmp/usr2/modules/mod_http2.so ${HOME2}/www/
+cp /tmp/usr2/modules/mod_brotli.so ${HOME2}/www/
 
 echo ${start_date}
 date
