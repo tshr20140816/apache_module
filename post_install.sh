@@ -63,8 +63,10 @@ tar xf cmake-3.10.2-Linux-x86_64.tar.gz -C ./usr --strip=1
 cd /tmp
 
 cd brotli
-./configure-cmake --prefix=/tmp/usr
-make -j2
+mkdir out
+cd out
+../configure-cmake --prefix=/tmp/usr --disable-debug
+make
 make install
 
 cd /tmp
