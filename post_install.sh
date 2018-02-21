@@ -4,7 +4,7 @@ set -x
 
 tmp1=${DATABASE_URL}
 
-echo ${DATABASE_URL} | grep -o 'po'
+echo ${DATABASE_URL} | grep -o '[0-9]'
 
 exit
 
