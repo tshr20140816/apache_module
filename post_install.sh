@@ -121,3 +121,5 @@ cp /tmp/usr2/modules/mod_brotli.so ${HOME2}/www/
 
 echo ${start_date}
 date
+
+ldd /tmp/usr2/modules/mod_brotli.so
