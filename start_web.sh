@@ -6,6 +6,8 @@ export TZ=JST-9
 
 ls -lang
 
+export LD_LIBRARY_PATH=/tmp/usr/lib
+
 chmod +x libbrotlicommon.so.1
 chmod +x libbrotlienc.so.1
 
