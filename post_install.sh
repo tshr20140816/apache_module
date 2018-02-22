@@ -49,9 +49,29 @@ wget http://ftp.tsukuba.wide.ad.jp/software/apache//apr/apr-1.6.3.tar.bz2 &
 wget http://ftp.tsukuba.wide.ad.jp/software/apache//apr/apr-util-1.6.1.tar.bz2 &
 wget http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.29.tar.gz &
 
-wait
 
 wget https://www.samba.org/ftp/ccache/ccache-3.3.4.tar.gz
+tar xf ccache-3.3.4.tar.gz
+cd ccache-3.3.4
+./configure --prefix=/tmp/usr
+make -j$(grep -c -e processor /proc/cpuinfo)
+make install
+
+cd /tmp/usr/bin
+ln -s ccache gcc
+ln -s ccache g++
+ln -s ccache cc
+ln -s ccache c++
+
+mkdir -m 666 /tmp/ccache
+export CCACHE_DIR=/tmp/ccache
+
+ccache -s
+ccache -z
+
+wait
+
+# wget https://c-ares.haxx.se/download/c-ares-1.13.0.tar.gz
 tar xf c-ares-1.13.0.tar.gz
 cd c-ares-1.13.0
 ./configure --prefix=/tmp/usr
@@ -92,7 +112,7 @@ cd brotli
 mkdir out
 cd out
 ../configure-cmake --prefix=/tmp/usr --disable-debug
-make
+make -j$(grep -c -e processor /proc/cpuinfo)
 make install
 
 cd /tmp
