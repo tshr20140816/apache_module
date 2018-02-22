@@ -4,9 +4,6 @@ set -x
 
 printenv
 
-whereis base64
-base64 --help
-
 postgres_user=$(echo ${DATABASE_URL} | awk -F':' '{print $2}' | sed -e 's/\///g')
 postgres_password=$(echo ${DATABASE_URL} | grep -o '/.\+@' | grep -o ':.\+' | sed -e 's/://' | sed -e 's/@//')
 postgres_server=$(echo ${DATABASE_URL} | awk -F'@' '{print $2}' | awk -F':' '{print $1}')
@@ -152,6 +149,10 @@ cd httpd-2.4.29
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install
 
+cd /tmp
+zip -9r ccache_cache.zip ./ccache
+base64 -w 0 ccache_cache.zip > ccache_cache.zip.base64.txt
+
 # ls -Rlang /tmp/usr
 # ls -Rlang /tmp/usr2
 
@@ -170,6 +171,8 @@ cp /tmp/usr/lib/libbrotlienc.so.1 ${HOME2}/www/
 cp /tmp/usr2/modules/mod_brotli.so ${HOME2}/www/
 
 ccache -s
+
+cat ccache_cache.zip.base64.txt
 
 echo ${start_date}
 date
