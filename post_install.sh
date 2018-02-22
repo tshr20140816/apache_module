@@ -2,7 +2,10 @@
 
 set -x
 
-# printenv
+date
+start_date=$(date)
+
+printenv
 
 postgres_user=$(echo ${DATABASE_URL} | awk -F':' '{print $2}' | sed -e 's/\///g')
 postgres_password=$(echo ${DATABASE_URL} | grep -o '/.\+@' | grep -o ':.\+' | sed -e 's/://' | sed -e 's/@//')
@@ -27,8 +30,10 @@ ALTER TABLE t_files ADD CONSTRAINT table_key PRIMARY KEY(file_name);
 __HEREDOC__
 cat /tmp/sql_result.txt
 
-date
-start_date=$(date)
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+TRUNCATE TABLE t_files;
+__HEREDOC__
+cat /tmp/sql_result.txt
 
 chmod 777 start_web.sh
 
@@ -177,10 +182,6 @@ INSERT INTO t_files (file_name, file_base64_text) VALUES ('config.cache.nghttp2-
 __HEREDOC__
 fi
 
-LIBCARES_CFLAGS="-I/tmp/usr/include" LIBCARES_LIBS="-L/tmp/usr/lib -lcares" \
- JANSSON_CFLAGS="-I/tmp/usr/include" JANSSON_LIBS="-L/tmp/usr/lib -ljansson" \
- ./configure --prefix=/tmp/usr --disable-examples --disable-dependency-tracking \
- --enable-lib-only
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install &
 
@@ -218,7 +219,7 @@ if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
 else
   ./configure --prefix=/tmp/usr --config-cache
   base64 -w 0 ./config.cache > /tmp/config.cache.apr-1.6.3.base64.txt
-  base64_text=$(cat /tmp/config.cache.apr-1.6.3apr-1.6.3.base64.txt)
+  base64_text=$(cat /tmp/config.cache.apr-1.6.3.base64.txt)
   psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
 INSERT INTO t_files (file_name, file_base64_text) VALUES ('config.cache.apr-1.6.3', '${base64_text}');
 __HEREDOC__
@@ -233,9 +234,28 @@ cd /tmp
 tar xf apr-util-1.6.1.tar.bz2
 cd apr-util-1.6.1
 
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+SELECT file_base64_text
+  FROM t_files
+ WHERE file_name = 'config.cache.apr-util-1.6.1'
+__HEREDOC__
+
 wait
 
-./configure --prefix=/tmp/usr --with-apr=/tmp/usr
+if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
+  echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.apr-util-1.6.1.base64.txt
+  base64 -d /tmp/config.cache.apr-util-1.6.1.base64.txt > /tmp/config.cache.apr-util-1.6.1
+  CONFIG_SITE="/tmp/config.cache.apr-util-1.6.1" ./configure --prefix=/tmp/usr --with-apr=/tmp/usr
+else
+  ./configure --prefix=/tmp/usr --with-apr=/tmp/usr --config-cache
+  base64 -w 0 ./config.cache > /tmp/config.cache.apr-util-1.6.1.base64.txt
+  base64_text=$(cat /tmp/config.cache.apr-util-1.6.1.base64.txt)
+  psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+INSERT INTO t_files (file_name, file_base64_text) VALUES ('config.cache.apr-util-1.6.1', '${base64_text}');
+__HEREDOC__
+fi
+
+# ./configure --prefix=/tmp/usr --with-apr=/tmp/usr
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install &
 
