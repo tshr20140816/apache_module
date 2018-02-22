@@ -77,15 +77,8 @@ cd /tmp
 tar xf c-ares-1.13.0.tar.gz
 cd c-ares-1.13.0
 ./configure --prefix=/tmp/usr
-# time make -j$(grep -c -e processor /proc/cpuinfo)
-# make install
-
-cat config.log
-
-cd /tmp
-df ./ -mh
-
-exit
+time make -j$(grep -c -e processor /proc/cpuinfo)
+make install
 
 cd /tmp
 
