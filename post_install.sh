@@ -60,6 +60,7 @@ wget http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.29.tar.gz &
 wget https://www.samba.org/ftp/ccache/ccache-3.3.4.tar.gz
 tar xf ccache-3.3.4.tar.gz
 cd ccache-3.3.4
+./configure --help
 ./configure --prefix=/tmp/usr
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install
@@ -104,6 +105,7 @@ SELECT file_base64_text
  WHERE file_name = 'config.cache.c-ares-1.13.0'
 __HEREDOC__
 
+./configure --help
 if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
   echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.cache.c-ares-1.13.0.base64.txt
   base64 -d /tmp/config.cache.c-ares-1.13.0.base64.txt > /tmp/config.cache.c-ares-1.13.0
@@ -132,6 +134,7 @@ SELECT file_base64_text
  WHERE file_name = 'config.cache.jansson-2.11'
 __HEREDOC__
 
+./configure --help
 if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
   echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.cache.jansson-2.11.base64.txt
   base64 -d /tmp/config.cache.jansson-2.11.base64.txt > /tmp/config.cache.jansson-2.11
@@ -162,6 +165,7 @@ __HEREDOC__
 
 wait
 
+./configure --help
 if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
   echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.cache.nghttp2-1.30.0.base64.txt
   base64 -d /tmp/config.cache.nghttp2-1.30.0.base64.txt > /tmp/config.cache.nghttp2-1.30.0
@@ -196,6 +200,7 @@ cd /tmp
 cd brotli
 mkdir out
 cd out
+../configure-cmake --help
 ../configure-cmake --prefix=/tmp/usr --disable-debug
 make -j$(grep -c -e processor /proc/cpuinfo)
 make install &
@@ -212,6 +217,7 @@ SELECT file_base64_text
  WHERE file_name = 'config.cache.apr-1.6.3'
 __HEREDOC__
 
+./configure --help
 if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
   echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.cache.apr-1.6.3.base64.txt
   base64 -d /tmp/config.cache.apr-1.6.3.base64.txt > /tmp/config.cache.apr-1.6.3
@@ -242,6 +248,7 @@ __HEREDOC__
 
 wait
 
+./configure --help
 if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
   echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.apr-util-1.6.1.base64.txt
   base64 -d /tmp/config.cache.apr-util-1.6.1.base64.txt > /tmp/config.cache.apr-util-1.6.1
@@ -268,8 +275,6 @@ cd httpd-2.4.29
 wait
 
 ./configure --help
-# ./configure --prefix=/tmp/usr2 \
-#  --with-apr=/tmp/usr --enable-ssl --enable-http2 --enable-proxy --enable-proxy-http2 --with-nghttp2=/tmp/usr
 ./configure --prefix=/tmp/usr2 \
  --with-apr=/tmp/usr --enable-ssl --enable-http2 --enable-proxy --enable-proxy-http2 --with-nghttp2=/tmp/usr \
  --enable-brotli --with-brotli=/tmp/usr --enable-mods-shared=few
