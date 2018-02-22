@@ -34,6 +34,8 @@ SELECT file_base64_text
 _EOF
 cat /tmp/sql_result.txt
 
+exit
+
 date
 start_date=$(date)
 
