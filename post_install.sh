@@ -40,6 +40,7 @@ cd /tmp
 
 openssl version
 
+wget https://c-ares.haxx.se/download/c-ares-1.13.0.tar.gz &
 wget http://www.digip.org/jansson/releases/jansson-2.11.tar.bz2 &
 wget https://github.com/nghttp2/nghttp2/releases/download/v1.30.0/nghttp2-1.30.0.tar.xz &
 wget https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.tar.gz &
@@ -48,14 +49,14 @@ wget http://ftp.tsukuba.wide.ad.jp/software/apache//apr/apr-1.6.3.tar.bz2 &
 wget http://ftp.tsukuba.wide.ad.jp/software/apache//apr/apr-util-1.6.1.tar.bz2 &
 wget http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.29.tar.gz &
 
-wget https://c-ares.haxx.se/download/c-ares-1.13.0.tar.gz
+wait
+
+wget https://www.samba.org/ftp/ccache/ccache-3.3.4.tar.gz
 tar xf c-ares-1.13.0.tar.gz
 cd c-ares-1.13.0
 ./configure --prefix=/tmp/usr
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install
-
-wait
 
 cd /tmp
 
@@ -81,10 +82,12 @@ make install
 
 cd /tmp
 
+# wget https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.tar.gz
 tar xf cmake-3.10.2-Linux-x86_64.tar.gz -C ./usr --strip=1 
 
 cd /tmp
 
+# git clone --depth 1 https://github.com/google/brotli
 cd brotli
 mkdir out
 cd out
