@@ -71,6 +71,8 @@ ccache -z
 
 wait
 
+cd /tmp
+
 # wget https://c-ares.haxx.se/download/c-ares-1.13.0.tar.gz
 tar xf c-ares-1.13.0.tar.gz
 cd c-ares-1.13.0
