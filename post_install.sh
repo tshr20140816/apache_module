@@ -57,11 +57,11 @@ cd ccache-3.3.4
 make -j$(grep -c -e processor /proc/cpuinfo)
 make install
 
-cd /tmp/usr/bin
-ln -s ccache gcc
-ln -s ccache g++
-ln -s ccache cc
-ln -s ccache c++
+# cd /tmp/usr/bin
+# ln -s ccache gcc
+# ln -s ccache g++
+# ln -s ccache cc
+# ln -s ccache c++
 
 mkdir -m 666 /tmp/ccache
 export CCACHE_DIR=/tmp/ccache
@@ -77,8 +77,6 @@ cd /tmp
 tar xf c-ares-1.13.0.tar.gz
 cd c-ares-1.13.0
 ./configure --prefix=/tmp/usr
-cat config.log
-exit
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install
 
