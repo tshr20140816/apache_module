@@ -46,7 +46,7 @@ SELECT file_base64_text
 _EOF
 cat /tmp/sql_result.txt
 
-cat /tmp/sql_result.txt | tail -n 1
+cat /tmp/sql_result.txt | grep -c '(1 row)'
 
 exit
 
