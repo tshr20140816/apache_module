@@ -27,19 +27,19 @@ ALTER TABLE t_files ADD CONSTRAINT table_key PRIMARY KEY(file_name);
 _EOF
 cat /tmp/sql_result.txt
 
-psql -q -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << _EOF
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << _EOF
 SELECT file_base64_text
   FROM t_files
  WHERE file_name = 'dummy'
 _EOF
 cat /tmp/sql_result.txt
 
-psql -q -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << _EOF
-INSERT INTO t_files (file_name, file_base64_text) VALUES ('dummy', '1234567890');
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << _EOF
+INSERT INTO t_files (file_name, file_base64_text) VALUES ('dummy1', '1234567890');
 _EOF
 cat /tmp/sql_result.txt
 
-psql -q -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << _EOF
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << _EOF
 SELECT file_base64_text
   FROM t_files
  WHERE file_name = 'dummy'
