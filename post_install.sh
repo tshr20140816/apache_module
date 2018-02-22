@@ -27,6 +27,13 @@ ALTER TABLE t_files ADD CONSTRAINT table_key PRIMARY KEY(file_name);
 _EOF
 cat /tmp/sql_result.txt
 
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << _EOF
+SELECT file_base64_text
+  FROM t_files
+ WHERE file_name = 'dummy'
+_EOF
+cat /tmp/sql_result.txt
+
 date
 start_date=$(date)
 
