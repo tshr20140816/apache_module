@@ -120,7 +120,26 @@ cd /tmp
 # wget http://www.digip.org/jansson/releases/jansson-2.11.tar.bz2
 tar xf jansson-2.11.tar.bz2
 cd jansson-2.11
-./configure --prefix=/tmp/usr
+
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+SELECT file_base64_text
+  FROM t_files
+ WHERE file_name = 'config.cache.jansson-2.11'
+__HEREDOC__
+
+if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
+  echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.cache.jansson-2.11.base64.txt
+  base64 -d /tmp/config.cache.jansson-2.11.base64.txt > /tmp/config.cache.jansson-2.11
+  CONFIG_SITE="/tmp/config.cache.jansson-2.11" ./configure --prefix=/tmp/usr
+else
+  ./configure --prefix=/tmp/usr --config-cache
+  base64 -w 0 ./config.cache > /tmp/config.cache.jansson-2.11.base64.txt
+  base64_text=$(cat /tmp/config.cache.jansson-2.11.base64.txt)
+  psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+INSERT INTO t_files (file_name, file_base64_text) VALUES ('config.cache.jansson-2.11', '${base64_text}');
+__HEREDOC__
+fi
+
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install
 
