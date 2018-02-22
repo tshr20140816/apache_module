@@ -68,6 +68,20 @@ ln -s ccache c++
 mkdir -m 777 /tmp/ccache
 export CCACHE_DIR=/tmp/ccache
 
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+SELECT file_base64_text
+  FROM t_files
+ WHERE file_name = 'ccache_cache.tar.bz2'
+__HEREDOC__
+
+if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
+  set +x
+  echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/ccache_cache.tar.bz2.base64.txt
+  set -x
+  base64 -d /tmp/ccache_cache.tar.bz2.base64.txt > /tmp/ccache_cache.tar.bz2
+  tar xf /tmp/ccache_cache.tar.bz2 -C /tmp/ccache --strip=1
+fi
+
 ccache -s
 ccache -z
 
