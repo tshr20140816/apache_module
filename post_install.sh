@@ -17,9 +17,7 @@ echo ${postgres_dbname}
 export PGPASSWORD=${postgres_password}
 
 psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
-SELECT file_base64_text
-  FROM t_files
- WHERE file_name = 'config.cache.c-ares-1.13.0'
+TRUNCATE TABLE t_files;
 __HEREDOC__
 cat /tmp/sql_result.txt
 
@@ -123,7 +121,7 @@ else
   ./configure --prefix=/tmp/usr --config-cache
   base64 -w 0 ./config.cache > /tmp/config.cache.c-ares-1.13.0.base64.txt
   base64_text=$(cat /tmp/config.cache.c-ares-1.13.0.base64.txt)
-  psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << '__HEREDOC__'
+  psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
 INSERT INTO t_files (file_name, file_base64_text) VALUES ('config.cache.c-ares-1.13.0', '${base64_text}');
 __HEREDOC__
 fi
