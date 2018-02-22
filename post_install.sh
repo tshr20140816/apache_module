@@ -113,7 +113,7 @@ __HEREDOC__
 fi
 
 time make -j$(grep -c -e processor /proc/cpuinfo)
-make install
+make install &
 
 cd /tmp
 
@@ -141,7 +141,7 @@ __HEREDOC__
 fi
 
 time make -j$(grep -c -e processor /proc/cpuinfo)
-make install
+make install &
 
 cd /tmp
 
@@ -149,12 +149,14 @@ cd /tmp
 tar xf nghttp2-1.30.0.tar.xz
 cd nghttp2-1.30.0
 
+wait
+
 LIBCARES_CFLAGS="-I/tmp/usr/include" LIBCARES_LIBS="-L/tmp/usr/lib -lcares" \
  JANSSON_CFLAGS="-I/tmp/usr/include" JANSSON_LIBS="-L/tmp/usr/lib -ljansson" \
  ./configure --prefix=/tmp/usr --disable-examples --disable-dependency-tracking \
  --enable-lib-only
 time make -j$(grep -c -e processor /proc/cpuinfo)
-make install
+make install &
 
 cd /tmp
 
@@ -169,7 +171,7 @@ mkdir out
 cd out
 ../configure-cmake --prefix=/tmp/usr --disable-debug
 make -j$(grep -c -e processor /proc/cpuinfo)
-make install
+make install &
 
 cd /tmp
 
@@ -178,22 +180,28 @@ tar xf apr-1.6.3.tar.bz2
 cd apr-1.6.3
 ./configure --prefix=/tmp/usr
 time make -j$(grep -c -e processor /proc/cpuinfo)
-make install
+make install &
 
 cd /tmp
 
 # wget http://ftp.tsukuba.wide.ad.jp/software/apache//apr/apr-util-1.6.1.tar.bz2
 tar xf apr-util-1.6.1.tar.bz2
 cd apr-util-1.6.1
+
+wait
+
 ./configure --prefix=/tmp/usr --with-apr=/tmp/usr
 time make -j$(grep -c -e processor /proc/cpuinfo)
-make install
+make install &
 
 cd /tmp
 
 # wget http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.29.tar.gz
 tar xf httpd-2.4.29.tar.gz
 cd httpd-2.4.29
+
+wait
+
 ./configure --help
 # ./configure --prefix=/tmp/usr2 \
 #  --with-apr=/tmp/usr --enable-ssl --enable-http2 --enable-proxy --enable-proxy-http2 --with-nghttp2=/tmp/usr
@@ -201,13 +209,11 @@ cd httpd-2.4.29
  --with-apr=/tmp/usr --enable-ssl --enable-http2 --enable-proxy --enable-proxy-http2 --with-nghttp2=/tmp/usr \
  --enable-brotli --with-brotli=/tmp/usr --enable-mods-shared=few
 time make -j$(grep -c -e processor /proc/cpuinfo)
-make install
+make install &
 
 cd /tmp
 tar -jcf ccache_cache.tar.bz2 ccache
 base64 -w 0 ccache_cache.tar.bz2 > ccache_cache.tar.bz2.base64.txt
-# zip -9r ccache_cache.zip ./ccache
-# base64 -w 0 ccache_cache.zip > ccache_cache.zip.base64.txt
 
 set +x
 base64_text=$(cat /tmp/ccache_cache.tar.bz2.base64.txt)
@@ -216,6 +222,8 @@ psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_
 INSERT INTO t_files (file_name, file_base64_text) VALUES ('ccache_cache.tar.bz2', '${base64_text}');
 __HEREDOC__
 set -x
+
+wait
 
 # ls -Rlang /tmp/usr
 # ls -Rlang /tmp/usr2
