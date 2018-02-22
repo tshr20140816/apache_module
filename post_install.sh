@@ -82,6 +82,9 @@ cd c-ares-1.13.0
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install
 
+cd /tmp
+df ./ -mh
+
 exit
 
 cd /tmp
