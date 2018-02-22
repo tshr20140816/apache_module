@@ -58,14 +58,12 @@ time make -j$(grep -c -e processor /proc/cpuinfo)
 make install
 
 cd /tmp/usr/bin
-# ln -s ccache gcc
-# ln -s ccache g++
-# ln -s ccache cc
-# ln -s ccache c++
+ln -s ccache gcc
+ln -s ccache g++
+ln -s ccache cc
+ln -s ccache c++
 
-ls -lang
-
-mkdir -m 666 /tmp/ccache
+mkdir -m 777 /tmp/ccache
 export CCACHE_DIR=/tmp/ccache
 
 ccache -s
