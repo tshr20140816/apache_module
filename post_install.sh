@@ -149,7 +149,33 @@ cd /tmp
 tar xf nghttp2-1.30.0.tar.xz
 cd nghttp2-1.30.0
 
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+SELECT file_base64_text
+  FROM t_files
+ WHERE file_name = 'config.cache.nghttp2-1.30.0'
+__HEREDOC__
+
 wait
+
+if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
+  echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.cache.nghttp2-1.30.0.base64.txt
+  base64 -d /tmp/config.cache.nghttp2-1.30.0.base64.txt > /tmp/config.cache.nghttp2-1.30.0
+  CONFIG_SITE="/tmp/config.cache.nghttp2-1.30.0" \
+   LIBCARES_CFLAGS="-I/tmp/usr/include" LIBCARES_LIBS="-L/tmp/usr/lib -lcares" \
+   JANSSON_CFLAGS="-I/tmp/usr/include" JANSSON_LIBS="-L/tmp/usr/lib -ljansson" \
+   ./configure --prefix=/tmp/usr --disable-examples --disable-dependency-tracking \
+   --enable-lib-only
+else
+  LIBCARES_CFLAGS="-I/tmp/usr/include" LIBCARES_LIBS="-L/tmp/usr/lib -lcares" \
+   JANSSON_CFLAGS="-I/tmp/usr/include" JANSSON_LIBS="-L/tmp/usr/lib -ljansson" \
+   ./configure --prefix=/tmp/usr --disable-examples --disable-dependency-tracking \
+   --enable-lib-only --config-cache
+  base64 -w 0 ./config.cache > /tmp/config.cache.nghttp2-1.30.0.base64.txt
+  base64_text=$(cat /tmp/config.cache.nghttp2-1.30.0.base64.txt)
+  psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+INSERT INTO t_files (file_name, file_base64_text) VALUES ('config.cache.nghttp2-1.30.0', '${base64_text}');
+__HEREDOC__
+fi
 
 LIBCARES_CFLAGS="-I/tmp/usr/include" LIBCARES_LIBS="-L/tmp/usr/lib -lcares" \
  JANSSON_CFLAGS="-I/tmp/usr/include" JANSSON_LIBS="-L/tmp/usr/lib -ljansson" \
