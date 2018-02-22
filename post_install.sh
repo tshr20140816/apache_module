@@ -30,11 +30,6 @@ ALTER TABLE t_files ADD CONSTRAINT table_key PRIMARY KEY(file_name);
 __HEREDOC__
 cat /tmp/sql_result.txt
 
-psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
-TRUNCATE TABLE t_files;
-__HEREDOC__
-cat /tmp/sql_result.txt
-
 chmod 777 start_web.sh
 
 export HOME2=${PWD}
