@@ -92,25 +92,27 @@ cd /tmp
 
 # wget https://c-ares.haxx.se/download/c-ares-1.13.0.tar.gz
 tar xf c-ares-1.13.0.tar.gz
-cd c-ares-1.13.0
+target=c-ares-1.13.0
+cd ${target}
 
 psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
 SELECT file_base64_text
   FROM t_files
- WHERE file_name = 'config.cache.c-ares-1.13.0'
+ WHERE file_name = 'config.cache.${target}'
 __HEREDOC__
 
 ./configure --help
 if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
-  echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.cache.c-ares-1.13.0.base64.txt
-  base64 -d /tmp/config.cache.c-ares-1.13.0.base64.txt > /tmp/config.cache.c-ares-1.13.0
-  CONFIG_SITE="/tmp/config.cache.c-ares-1.13.0" ./configure --prefix=/tmp/usr
+  echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.cache.${target}.base64.txt
+  base64 -d /tmp/config.cache.${target}.base64.txt > /tmp/config.cache.${target}
+  CONFIG_SITE="/tmp/config.cache.${target}" \
+   ./configure --prefix=/tmp/usr
 else
   ./configure --prefix=/tmp/usr --config-cache
-  base64 -w 0 ./config.cache > /tmp/config.cache.c-ares-1.13.0.base64.txt
-  base64_text=$(cat /tmp/config.cache.c-ares-1.13.0.base64.txt)
+  base64 -w 0 ./config.cache > /tmp/config.cache.${target}.base64.txt
+  base64_text=$(cat /tmp/config.cache.${target}.base64.txt)
   psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
-INSERT INTO t_files (file_name, file_base64_text) VALUES ('config.cache.c-ares-1.13.0', '${base64_text}');
+INSERT INTO t_files (file_name, file_base64_text) VALUES ('config.cache.${target}', '${base64_text}');
 __HEREDOC__
 fi
 
