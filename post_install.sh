@@ -123,6 +123,8 @@ fi
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install &
 
+# ***** jansson *****
+
 cd /tmp
 
 # wget http://www.digip.org/jansson/releases/jansson-2.11.tar.bz2
@@ -153,6 +155,8 @@ fi
 
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install &
+
+# ***** nghttp2 *****
 
 cd /tmp
 
@@ -194,10 +198,14 @@ fi
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install &
 
+# ***** cmake *****
+
 cd /tmp
 
 # wget https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.tar.gz
 tar xf cmake-3.10.2-Linux-x86_64.tar.gz -C ./usr --strip=1 
+
+# ***** brotli *****
 
 cd /tmp
 
@@ -209,6 +217,8 @@ cd out
 ../configure-cmake --prefix=/tmp/usr --disable-debug
 make -j$(grep -c -e processor /proc/cpuinfo)
 make install &
+
+# ***** apr *****
 
 cd /tmp
 
@@ -240,6 +250,8 @@ fi
 
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install &
+
+# ***** apr-util *****
 
 cd /tmp
 
@@ -274,6 +286,8 @@ fi
 # ./configure --prefix=/tmp/usr --with-apr=/tmp/usr
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install &
+
+# ***** httpd *****
 
 cd /tmp
 
