@@ -33,8 +33,7 @@ chmod 777 start_web.sh
 export HOME2=${PWD}
 export PATH="/tmp/usr/bin:${PATH}"
 
-# export CFLAGS="-march=native -O2"
-export CFLAGS="-O2"
+export CFLAGS="-march=native -O2"
 export CXXFLAGS="$CFLAGS"
 
 cd /tmp
@@ -82,6 +81,8 @@ cd c-ares-1.13.0
 ./configure --prefix=/tmp/usr
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install
+
+config.log
 
 cd /tmp
 df ./ -mh
