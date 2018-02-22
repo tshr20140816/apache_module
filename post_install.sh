@@ -84,7 +84,6 @@ SELECT file_base64_text
   FROM t_files
  WHERE file_name = 'config.cache.c-ares-1.13.0'
 __HEREDOC__
-cat /tmp/sql_result.txt
 
 if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
   echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.cache.c-ares-1.13.0.base64.txt
@@ -98,8 +97,6 @@ else
 INSERT INTO t_files (file_name, file_base64_text) VALUES ('config.cache.c-ares-1.13.0', '${base64_text}');
 __HEREDOC__
 fi
-
-exit
 
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install
