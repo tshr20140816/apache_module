@@ -174,5 +174,7 @@ ccache -s
 
 cat ccache_cache.zip.base64.txt
 
+ls -lang
+
 echo ${start_date}
 date
