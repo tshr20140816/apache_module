@@ -46,6 +46,8 @@ SELECT file_base64_text
 _EOF
 cat /tmp/sql_result.txt
 
+cat /tmp/sql_result.txt | tail -n 1
+
 exit
 
 date
