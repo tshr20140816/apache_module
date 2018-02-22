@@ -18,12 +18,14 @@ export PGPASSWORD=${postgres_password}
 
 psql --help
 
-psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > result << _EOF
-CREATE TABLE T_HOGE(K1 INT);
-DROP TABLE T_HOGE;
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << _EOF
+CREATE TABLE t_files (
+  file_name character varying(255) NOT NULL
+ ,file_base64_text text NOT NULL
+);
+ALTER TABLE t_files ADD CONSTRAINT table_key PRIMARY KEY(file_name);
 _EOF
-cat result
-
+cat /tmp/sql_result.txt
 
 date
 start_date=$(date)
