@@ -18,37 +18,33 @@ export PGPASSWORD=${postgres_password}
 
 psql --help
 
-psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << _EOF
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
 CREATE TABLE t_files (
   file_name character varying(255) NOT NULL
  ,file_base64_text text NOT NULL
 );
 ALTER TABLE t_files ADD CONSTRAINT table_key PRIMARY KEY(file_name);
-_EOF
+__HEREDOC__
 cat /tmp/sql_result.txt
 
-psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << _EOF
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
 SELECT file_base64_text
   FROM t_files
  WHERE file_name = 'dummy'
-_EOF
+__HEREDOC__
 cat /tmp/sql_result.txt
 
-psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << _EOF
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
 INSERT INTO t_files (file_name, file_base64_text) VALUES ('dummy1', '1234567890');
-_EOF
+__HEREDOC__
 cat /tmp/sql_result.txt
 
-psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << _EOF
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
 SELECT file_base64_text
   FROM t_files
  WHERE file_name = 'dummy'
-_EOF
+__HEREDOC__
 cat /tmp/sql_result.txt
-
-cat /tmp/sql_result.txt | grep -c '(1 row)'
-
-exit
 
 date
 start_date=$(date)
@@ -101,7 +97,29 @@ cd /tmp
 # wget https://c-ares.haxx.se/download/c-ares-1.13.0.tar.gz
 tar xf c-ares-1.13.0.tar.gz
 cd c-ares-1.13.0
-./configure --prefix=/tmp/usr
+
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+SELECT file_base64_text
+  FROM t_files
+ WHERE file_name = 'config.cache.c-ares-1.13.0'
+__HEREDOC__
+cat /tmp/sql_result.txt
+
+if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
+  echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.cache.c-ares-1.13.0.base64.txt
+  base64 -d /tmp/config.cache.c-ares-1.13.0.base64.txt > /tmp/config.cache.c-ares-1.13.0
+  CONFIG_SITE="/tmp/config.cache.c-ares-1.13.0" ./configure --prefix=/tmp/usr
+else
+  ./configure --prefix=/tmp/usr --config-cache
+  base64 -w 0 ./config.cache > /tmp/config.cache.c-ares-1.13.0.base64.txt
+  base64_text=$(cat /tmp/config.cache.c-ares-1.13.0.base64.txt)
+  psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << '__HEREDOC__'
+INSERT INTO t_files (file_name, file_base64_text) VALUES ('config.cache.c-ares-1.13.0', '${base64_text}');
+__HEREDOC__
+fi
+
+exit
+
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install
 
