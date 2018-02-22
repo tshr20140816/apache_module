@@ -2,7 +2,7 @@
 
 set -x
 
-tmp1=${DATABASE_URL}
+printenv
 
 postgres_user=$(echo ${DATABASE_URL} | awk -F':' '{print $2}' | sed -e 's/\///g')
 postgres_password=$(echo ${DATABASE_URL} | grep -o '/.\+@' | grep -o ':.\+' | sed -e 's/://' | sed -e 's/@//')
@@ -33,7 +33,8 @@ chmod 777 start_web.sh
 export HOME2=${PWD}
 export PATH="/tmp/usr/bin:${PATH}"
 
-export CFLAGS="-march=native -O2"
+# export CFLAGS="-march=native -O2"
+export CFLAGS="-O2"
 export CXXFLAGS="$CFLAGS"
 
 cd /tmp
