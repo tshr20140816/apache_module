@@ -166,5 +166,7 @@ cp /tmp/usr/lib/libbrotlicommon.so.1 ${HOME2}/www/
 cp /tmp/usr/lib/libbrotlienc.so.1 ${HOME2}/www/
 cp /tmp/usr2/modules/mod_brotli.so ${HOME2}/www/
 
+ccache -s
+
 echo ${start_date}
 date
