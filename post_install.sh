@@ -178,7 +178,26 @@ cd /tmp
 # wget http://ftp.tsukuba.wide.ad.jp/software/apache//apr/apr-1.6.3.tar.bz2
 tar xf apr-1.6.3.tar.bz2
 cd apr-1.6.3
-./configure --prefix=/tmp/usr
+
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+SELECT file_base64_text
+  FROM t_files
+ WHERE file_name = 'config.cache.apr-1.6.3'
+__HEREDOC__
+
+if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
+  echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.cache.apr-1.6.3.base64.txt
+  base64 -d /tmp/config.cache.apr-1.6.3.base64.txt > /tmp/config.cache.apr-1.6.3
+  CONFIG_SITE="/tmp/config.cache.apr-1.6.3" ./configure --prefix=/tmp/usr
+else
+  ./configure --prefix=/tmp/usr --config-cache
+  base64 -w 0 ./config.cache > /tmp/config.cache.apr-1.6.3.base64.txt
+  base64_text=$(cat /tmp/config.cache.apr-1.6.3apr-1.6.3.base64.txt)
+  psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+INSERT INTO t_files (file_name, file_base64_text) VALUES ('config.cache.apr-1.6.3', '${base64_text}');
+__HEREDOC__
+fi
+
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install &
 
