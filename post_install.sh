@@ -88,6 +88,8 @@ ccache -z
 
 wait
 
+# ***** c-ares *****
+
 cd /tmp
 
 # wget https://c-ares.haxx.se/download/c-ares-1.13.0.tar.gz
@@ -103,7 +105,9 @@ __HEREDOC__
 
 ./configure --help
 if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
+  set +x
   echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.cache.${target}.base64.txt
+  set -x
   base64 -d /tmp/config.cache.${target}.base64.txt > /tmp/config.cache.${target}
   CONFIG_SITE="/tmp/config.cache.${target}" \
    ./configure --prefix=/tmp/usr
@@ -133,7 +137,9 @@ __HEREDOC__
 
 ./configure --help
 if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
+  set +x
   echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.cache.jansson-2.11.base64.txt
+  set -x
   base64 -d /tmp/config.cache.jansson-2.11.base64.txt > /tmp/config.cache.jansson-2.11
   CONFIG_SITE="/tmp/config.cache.jansson-2.11" ./configure --prefix=/tmp/usr
 else
@@ -164,7 +170,9 @@ wait
 
 ./configure --help
 if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
+  set +x
   echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.cache.nghttp2-1.30.0.base64.txt
+  set -x
   base64 -d /tmp/config.cache.nghttp2-1.30.0.base64.txt > /tmp/config.cache.nghttp2-1.30.0
   CONFIG_SITE="/tmp/config.cache.nghttp2-1.30.0" \
    LIBCARES_CFLAGS="-I/tmp/usr/include" LIBCARES_LIBS="-L/tmp/usr/lib -lcares" \
@@ -216,7 +224,9 @@ __HEREDOC__
 
 ./configure --help
 if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
+  set +x
   echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.cache.apr-1.6.3.base64.txt
+  set -x
   base64 -d /tmp/config.cache.apr-1.6.3.base64.txt > /tmp/config.cache.apr-1.6.3
   CONFIG_SITE="/tmp/config.cache.apr-1.6.3" ./configure --prefix=/tmp/usr
 else
@@ -247,7 +257,9 @@ wait
 
 ./configure --help
 if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
+  set +x
   echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.apr-util-1.6.1.base64.txt
+  set -x
   base64 -d /tmp/config.cache.apr-util-1.6.1.base64.txt > /tmp/config.cache.apr-util-1.6.1
   CONFIG_SITE="/tmp/config.cache.apr-util-1.6.1" ./configure --prefix=/tmp/usr --with-apr=/tmp/usr
 else
