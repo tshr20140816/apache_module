@@ -150,6 +150,8 @@ time make -j$(grep -c -e processor /proc/cpuinfo)
 make install
 
 cd /tmp
+tar -jcf ccache_cache.tar.bz2 ccache
+base64 -w 0 ccache_cache.tar.bz2 > ccache_cache.tar.bz2.base64.txt
 zip -9r ccache_cache.zip ./ccache
 base64 -w 0 ccache_cache.zip > ccache_cache.zip.base64.txt
 
@@ -171,8 +173,6 @@ cp /tmp/usr/lib/libbrotlienc.so.1 ${HOME2}/www/
 cp /tmp/usr2/modules/mod_brotli.so ${HOME2}/www/
 
 ccache -s
-
-cat ccache_cache.zip.base64.txt
 
 ls -lang
 
