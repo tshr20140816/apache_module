@@ -34,6 +34,18 @@ SELECT file_base64_text
 _EOF
 cat /tmp/sql_result.txt
 
+psql -q -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << _EOF
+INSERT INTO t_files (file_name, file_base64_text) VALUES ('A', '1234567890');
+_EOF
+cat /tmp/sql_result.txt
+
+psql -q -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << _EOF
+SELECT file_base64_text
+  FROM t_files
+ WHERE file_name = 'dummy'
+_EOF
+cat /tmp/sql_result.txt
+
 exit
 
 date
