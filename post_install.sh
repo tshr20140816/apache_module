@@ -16,13 +16,6 @@ echo ${postgres_dbname}
 
 export PGPASSWORD=${postgres_password}
 
-psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
-TRUNCATE TABLE t_files;
-__HEREDOC__
-cat /tmp/sql_result.txt
-
-exit
-
 psql --help
 
 psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
@@ -114,7 +107,6 @@ cat /tmp/sql_result.txt
 
 if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
   echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.cache.c-ares-1.13.0.base64.txt
-  cat /tmp/config.cache.c-ares-1.13.0.base64.txt
   base64 -d /tmp/config.cache.c-ares-1.13.0.base64.txt > /tmp/config.cache.c-ares-1.13.0
   CONFIG_SITE="/tmp/config.cache.c-ares-1.13.0" ./configure --prefix=/tmp/usr
 else
