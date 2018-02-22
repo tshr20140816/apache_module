@@ -238,9 +238,9 @@ if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
   echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.cache.apr-1.6.3.base64.txt
   set -x
   base64 -d /tmp/config.cache.apr-1.6.3.base64.txt > /tmp/config.cache.apr-1.6.3
-  CONFIG_SITE="/tmp/config.cache.apr-1.6.3" ./configure --prefix=/tmp/usr
+  CONFIG_SITE="/tmp/config.cache.apr-1.6.3" ./configure --prefix=/tmp/usr --disable-ipv6
 else
-  ./configure --prefix=/tmp/usr --config-cache
+  ./configure --prefix=/tmp/usr --disable-ipv6 --config-cache
   base64 -w 0 ./config.cache > /tmp/config.cache.apr-1.6.3.base64.txt
   base64_text=$(cat /tmp/config.cache.apr-1.6.3.base64.txt)
   psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
