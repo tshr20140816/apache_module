@@ -16,6 +16,15 @@ echo ${postgres_dbname}
 
 export PGPASSWORD=${postgres_password}
 
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+SELECT file_base64_text
+  FROM t_files
+ WHERE file_name = 'config.cache.c-ares-1.13.0'
+__HEREDOC__
+cat /tmp/sql_result.txt
+
+exit
+
 psql --help
 
 psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
@@ -62,13 +71,13 @@ cd /tmp
 openssl version
 
 wget https://c-ares.haxx.se/download/c-ares-1.13.0.tar.gz &
-wget http://www.digip.org/jansson/releases/jansson-2.11.tar.bz2 &
-wget https://github.com/nghttp2/nghttp2/releases/download/v1.30.0/nghttp2-1.30.0.tar.xz &
-wget https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.tar.gz &
-git clone --depth 1 https://github.com/google/brotli &
-wget http://ftp.tsukuba.wide.ad.jp/software/apache//apr/apr-1.6.3.tar.bz2 &
-wget http://ftp.tsukuba.wide.ad.jp/software/apache//apr/apr-util-1.6.1.tar.bz2 &
-wget http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.29.tar.gz &
+# wget http://www.digip.org/jansson/releases/jansson-2.11.tar.bz2 &
+# wget https://github.com/nghttp2/nghttp2/releases/download/v1.30.0/nghttp2-1.30.0.tar.xz &
+# wget https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.tar.gz &
+# git clone --depth 1 https://github.com/google/brotli &
+# wget http://ftp.tsukuba.wide.ad.jp/software/apache//apr/apr-1.6.3.tar.bz2 &
+# wget http://ftp.tsukuba.wide.ad.jp/software/apache//apr/apr-util-1.6.1.tar.bz2 &
+# wget http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.29.tar.gz &
 
 
 wget https://www.samba.org/ftp/ccache/ccache-3.3.4.tar.gz
@@ -107,6 +116,7 @@ cat /tmp/sql_result.txt
 
 if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
   echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.cache.c-ares-1.13.0.base64.txt
+  cat /tmp/config.cache.c-ares-1.13.0.base64.txt
   base64 -d /tmp/config.cache.c-ares-1.13.0.base64.txt > /tmp/config.cache.c-ares-1.13.0
   CONFIG_SITE="/tmp/config.cache.c-ares-1.13.0" ./configure --prefix=/tmp/usr
 else
