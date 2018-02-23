@@ -300,7 +300,7 @@ wait
 ./configure --help
 ./configure --prefix=/tmp/usr2 \
  --with-apr=/tmp/usr --enable-ssl --enable-http2 --enable-proxy --enable-proxy-http2 --with-nghttp2=/tmp/usr \
- --enable-brotli --with-brotli=/tmp/usr --enable-mods-shared="few cache"
+ --enable-brotli --with-brotli=/tmp/usr --enable-mods-shared="few cache cache_disk cache_socache"
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install &
 
