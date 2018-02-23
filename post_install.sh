@@ -327,6 +327,9 @@ cp /tmp/usr2/modules/mod_http2.so ${HOME2}/
 cp /tmp/usr/lib/libbrotlicommon.so.1 ${HOME2}/
 cp /tmp/usr/lib/libbrotlienc.so.1 ${HOME2}/
 cp /tmp/usr2/modules/mod_brotli.so ${HOME2}/
+cp /tmp/usr2/modules/mod_cache.so ${HOME2}/
+cp /tmp/usr2/modules/mod_cache_socache.so ${HOME2}/
+cp /tmp/usr2/modules/mod_cache_disk.so ${HOME2}/
 
 cp /tmp/usr/lib/libnghttp2.so.14 ${HOME2}/www/
 cp /tmp/usr2/modules/mod_proxy_http2.so ${HOME2}/www/
@@ -334,6 +337,9 @@ cp /tmp/usr2/modules/mod_http2.so ${HOME2}/www/
 cp /tmp/usr/lib/libbrotlicommon.so.1 ${HOME2}/www/
 cp /tmp/usr/lib/libbrotlienc.so.1 ${HOME2}/www/
 cp /tmp/usr2/modules/mod_brotli.so ${HOME2}/www/
+cp /tmp/usr2/modules/mod_cache.so ${HOME2}/www/
+cp /tmp/usr2/modules/mod_cache_socache.so ${HOME2}/www/
+cp /tmp/usr2/modules/mod_cache_disk.so ${HOME2}/www/
 
 ccache -s
 
