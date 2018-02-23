@@ -347,3 +347,5 @@ ls -lang
 
 echo ${start_date}
 date
+
+ldd /tmp/usr2/modules/mod_cache_disk.so
