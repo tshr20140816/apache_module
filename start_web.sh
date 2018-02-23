@@ -4,6 +4,14 @@ set -x
 
 export TZ=JST-9
 
+httpd -V
+httpd -M
+php --version
+whereis php
+cat /proc/version
+curl --version
+printenv
+
 ls -lang
 
 export LD_LIBRARY_PATH=/tmp/usr/lib
