@@ -32,5 +32,6 @@ ldd /tmp/usr/lib/libbrotlienc.so.1
 ldd ./mod_http2.so
 ldd ./mod_proxy_http2.so
 ldd ./mod_brotli.so
+ldd ./mod_cache_disk.so
 
 vendor/bin/heroku-php-apache2 -C apache.conf www
