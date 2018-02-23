@@ -318,8 +318,8 @@ set -x
 
 wait
 
-# ls -Rlang /tmp/usr
-# ls -Rlang /tmp/usr2
+ls -Rlang /tmp/usr
+ls -Rlang /tmp/usr2
 
 cp /tmp/usr/lib/libnghttp2.so.14 ${HOME2}/
 cp /tmp/usr2/modules/mod_proxy_http2.so ${HOME2}/
