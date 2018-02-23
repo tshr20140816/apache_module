@@ -300,7 +300,7 @@ wait
 ./configure --help
 ./configure --prefix=/tmp/usr2 \
  --with-apr=/tmp/usr --enable-ssl --enable-http2 --enable-proxy --enable-proxy-http2 --with-nghttp2=/tmp/usr \
- --enable-brotli --with-brotli=/tmp/usr --enable-mods-shared="few cache cache_disk cache_socache"
+ --enable-brotli --with-brotli=/tmp/usr --enable-mods-shared="few cache cache_disk cache_socache socache_shmcb"
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install &
 
@@ -347,5 +347,3 @@ ls -lang
 
 echo ${start_date}
 date
-
-ldd /tmp/usr2/modules/mod_cache_disk.so
