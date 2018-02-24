@@ -15,10 +15,8 @@ tar xf pigz-2.4.tar.gz
 
 cd pigz-2.4
 
-ls -lang
-
 make -j2
-#./configure --help
-#./configure --prefix=/tmp/usr
+
+ls -Rlang 
 
 date
