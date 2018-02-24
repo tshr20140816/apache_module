@@ -7,7 +7,7 @@ start_date=$(date)
 
 cd /tmp
 
-wget https://tukaani.org/xz/xz-5.2.3.tar.gz
+wget https://sourceforge.net/projects/lzmautils/files/xz-5.2.3.tar.bz2/download -O xz-5.2.3.tar.gz
 
 tar xf xz-5.2.3.tar.gz
 
