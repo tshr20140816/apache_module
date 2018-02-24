@@ -15,8 +15,12 @@ tar xf pigz-2.4.tar.gz
 
 cd pigz-2.4
 
+cat Makefile
+
 make -j2
 
 ls -Rlang 
+
+ldd pigz
 
 date
