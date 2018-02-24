@@ -24,8 +24,6 @@ make install
 
 ls -Rlang /tmp/usr
 
-exit
-
 cd /tmp
 
 git clone --depth 1 https://github.com/xz-mirror/xz
