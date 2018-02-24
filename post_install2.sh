@@ -15,7 +15,8 @@ tar xf pigz-2.4.tar.gz
 
 cd pigz-2.4
 
-./configure --help
-./configure --prefix=/tmp/usr
+ls -lang
+#./configure --help
+#./configure --prefix=/tmp/usr
 
 date
