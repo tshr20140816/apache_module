@@ -50,7 +50,6 @@ cd /tmp
 
 openssl version
 
-wget https://launchpad.net/pbzip2/1.1/1.1.13/+download/pbzip2-1.1.13.tar.gz &
 wget https://c-ares.haxx.se/download/c-ares-1.13.0.tar.gz &
 wget http://www.digip.org/jansson/releases/jansson-2.11.tar.bz2 &
 wget https://github.com/nghttp2/nghttp2/releases/download/v1.30.0/nghttp2-1.30.0.tar.xz &
@@ -96,16 +95,6 @@ ccache -s
 ccache -z
 
 wait
-
-# ***** pbzip2 *****
-
-cd /tmp
-
-# wget https://launchpad.net/pbzip2/1.1/1.1.13/+download/pbzip2-1.1.13.tar.gz
-tar xf pbzip2-1.1.13.tar.gz
-cd pbzip2-1.1.13
-make -j$(grep -c -e processor /proc/cpuinfo)
-cp -p pbzip2 /tmp/usr/bin/
 
 # ***** c-ares *****
 
