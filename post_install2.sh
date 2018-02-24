@@ -5,22 +5,18 @@ set -x
 date
 start_date=$(date)
 
-printenv
-
 cd /tmp
 
-wget http://zlib.net/pigz/pigz-2.4.tar.gz
+wget https://launchpad.net/pbzip2/1.1/1.1.13/+download/pbzip2-1.1.13.tar.gz
 
-tar xf pigz-2.4.tar.gz
+tar xf pbzip2-1.1.13.tar.gz
 
-cd pigz-2.4
+cd pbzip2-1.1.13
 
 cat Makefile
 
-make -j2
+time make -j2
 
 ls -Rlang 
-
-ldd pigz
 
 date
