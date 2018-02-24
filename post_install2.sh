@@ -22,8 +22,6 @@ cd gettext*
 make -j2
 make install
 
-ls -Rlang /tmp/usr
-
 cd /tmp
 
 git clone --depth 1 https://github.com/xz-mirror/xz
@@ -32,7 +30,14 @@ cd xz
 ./autogen.sh
 
 ./configure --help
-
 ./configure --prefix=/tmp/usr
+time make -j2
+make install
+
+cd /tmp/usr/bin
+
+ls -lang
+
+ldd xz
 
 date
