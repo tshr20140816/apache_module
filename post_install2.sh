@@ -9,12 +9,13 @@ printenv
 
 cd /tmp
 
-wget http://jnovy.fedorapeople.org/pxz/pxz-4.999.9beta.20091201git.tar.xz
+http://zlib.net/pigz/pigz-2.4.tar.gz
 
-tar xf pxz-4.999.9beta.20091201git.tar.xz
+tar xf pigz-2.4.tar.gz
 
-cd pxz-4.999.9beta
+cd pigz-2.4
 
-ls -lang
+./configure --help
+./configure --prefix=/tmp/usr
 
 date
