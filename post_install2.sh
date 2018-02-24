@@ -18,7 +18,7 @@ wget http://ftp.gnu.org/pub/gnu/gettext/gettext-latest.tar.gz
 tar xf gettext-latest.tar.gz
 cd gettext*
 ./configure --help
-./configure --prefix=/tmp/usr
+./configure --prefix=/tmp/usr --disable-java --disable-native-java
 make -j2
 make install
 
