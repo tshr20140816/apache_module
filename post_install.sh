@@ -50,6 +50,7 @@ cd /tmp
 
 openssl version
 
+wget http://zlib.net/pigz/pigz-2.4.tar.gz &
 wget https://c-ares.haxx.se/download/c-ares-1.13.0.tar.gz &
 wget http://www.digip.org/jansson/releases/jansson-2.11.tar.bz2 &
 wget https://github.com/nghttp2/nghttp2/releases/download/v1.30.0/nghttp2-1.30.0.tar.xz &
@@ -95,6 +96,16 @@ ccache -s
 ccache -z
 
 wait
+
+# ***** pigz *****
+
+cd /tmp
+
+# wget http://zlib.net/pigz/pigz-2.4.tar.gz
+tar xf pigz-2.4.tar.gz
+cd pigz-2.4
+make -j2
+cp -p pigz unpigz /tmp/usr/bin/
 
 # ***** c-ares *****
 
@@ -313,7 +324,9 @@ time make -j$(grep -c -e processor /proc/cpuinfo)
 make install &
 
 cd /tmp
-tar -jcf ccache_cache.tar.bz2 ccache
+time tar -jcf ccache_cache.tar.bz2 ccache
+time tar -cf ccache_cache.tar.gz --use-compress-prog=pigz ccache
+
 base64 -w 0 ccache_cache.tar.bz2 > ccache_cache.tar.bz2.base64.txt
 
 set +x
