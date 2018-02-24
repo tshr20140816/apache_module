@@ -327,6 +327,8 @@ cd /tmp
 time tar -jcf ccache_cache.tar.bz2 ccache
 time tar -cf ccache_cache.tar.gz --use-compress-prog=pigz ccache
 
+ls -lang
+
 base64 -w 0 ccache_cache.tar.bz2 > ccache_cache.tar.bz2.base64.txt
 
 set +x
@@ -339,8 +341,8 @@ set -x
 
 wait
 
-ls -Rlang /tmp/usr
-ls -Rlang /tmp/usr2
+# ls -Rlang /tmp/usr
+# ls -Rlang /tmp/usr2
 
 cp /tmp/usr/lib/libnghttp2.so.14 ${HOME2}/
 cp /tmp/usr2/modules/mod_proxy_http2.so ${HOME2}/
