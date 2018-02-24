@@ -7,15 +7,11 @@ start_date=$(date)
 
 cd /tmp
 
-wget https://launchpad.net/pbzip2/1.1/1.1.13/+download/pbzip2-1.1.13.tar.gz
+wget https://tukaani.org/xz/xz-5.2.3.tar.bz2
 
-tar xf pbzip2-1.1.13.tar.gz
+tar xf xz-5.2.3.tar.bz2
 
-cd pbzip2-1.1.13
-
-cat Makefile
-
-time make -j2
+cd xz-5.2.3
 
 ls -Rlang 
 
