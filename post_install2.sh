@@ -31,6 +31,8 @@ git clone --depth 1 https://github.com/xz-mirror/xz
 cd xz
 ./autogen.sh
 
-ls -lang
+.configure --help
+
+.configure --prefix=/tmp/usr
 
 date
