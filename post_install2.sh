@@ -7,11 +7,9 @@ start_date=$(date)
 
 cd /tmp
 
-wget https://sourceforge.net/projects/lzmautils/files/xz-5.2.3.tar.bz2/download -O xz-5.2.3.tar.gz
+git clone --depth 1 https://github.com/xz-mirror/xz
 
-tar xf xz-5.2.3.tar.gz
-
-cd xz-5.2.3
+cd xz
 
 ls -Rlang 
 
