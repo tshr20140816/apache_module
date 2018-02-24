@@ -22,6 +22,8 @@ cd gettext*
 make -j2
 make install
 
+ls -Rlang /tmp/usr
+
 exit
 
 cd /tmp
