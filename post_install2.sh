@@ -5,7 +5,6 @@ set -x
 date
 start_date=$(date)
 
-export HOME2=${PWD}
 export PATH="/tmp/usr/bin:${PATH}"
 
 export CFLAGS="-march=native -O2"
@@ -40,4 +39,5 @@ ls -lang
 
 ldd xz
 
+echo ${start_date}
 date
