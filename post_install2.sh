@@ -9,7 +9,7 @@ printenv
 
 cd /tmp
 
-http://zlib.net/pigz/pigz-2.4.tar.gz
+wget http://zlib.net/pigz/pigz-2.4.tar.gz
 
 tar xf pigz-2.4.tar.gz
 
