@@ -10,7 +10,8 @@ cd /tmp
 git clone --depth 1 https://github.com/xz-mirror/xz
 
 cd xz
+./autogen.sh
 
-ls -Rlang 
+ls -lang
 
 date
