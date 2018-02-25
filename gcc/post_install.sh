@@ -74,7 +74,11 @@ cd /tmp/usr
 
 ls -Ralng
 
-df ./ -mh
+cd /tmp
+
+time tar -jcf usr.tar.bz2 usr
+
+ls -lang
 
 echo ${start_date}
 date
