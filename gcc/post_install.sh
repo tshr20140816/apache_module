@@ -42,6 +42,8 @@ cd gmp-6.1.2
 
 ./configure --help
 ./configure --prefix=/tmp/usr
+time make -j2
+make install
 
 cd /tmp
 
