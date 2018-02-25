@@ -74,7 +74,7 @@ cd work
 time ../configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc \
   --with-gmp==/tmp/usr --with-mpfr=/tmp/usr --with-mpc=/tmp/usr \
   --disable-multilib --enable-stage1-languages=c,c++ \
-  target=x86_64-unknown-linux-gnu \
+  target=x86_64-pc-linux-gnu \
   --disable-libjava --disable-libgo --disable-libgfortran --disable-objc --enable-languages=c,c++
 
 time make -j${parallels}
