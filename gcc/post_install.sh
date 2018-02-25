@@ -37,6 +37,13 @@ __HEREDOC__
 cat /tmp/sql_result.txt
 
 psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+DELETE
+  FROM t_files
+ WHERE file_name = 'usr.tar.bz2'
+__HEREDOC__
+cat /tmp/sql_result.txt
+
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
 SELECT file_name
       ,length(file_base64_text)
   FROM t_files
