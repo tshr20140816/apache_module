@@ -35,15 +35,14 @@ make install
 
 cd /tmp
 
-wget http://jnovy.fedorapeople.org/pxz/pxz-4.999.9beta.20091201git.tar.xz
+git cline --depth 1 https://github.com/vasi/pixz.git
 
-tar xf pxz-4.999.9beta.20091201git.tar.xz
+cd pixz
+./autogen.sh
 
-cd pxz*
+./configure --help
+./configure --prefix=/tmp/usr
 
-make -j2
-
-ls -Rlang
 
 cd /tmp/usr/bin
 
