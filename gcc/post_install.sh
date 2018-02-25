@@ -37,7 +37,7 @@ cat /tmp/sql_result.txt
 cd /tmp
 
 wget https://ftp.gnu.org/gnu/gmp/gmp-6.1.2.tar.bz2
-
+tar xf gmp-6.1.2.tar.bz2
 cd gmp-6.1.2
 
 ./configure --help
