@@ -9,6 +9,8 @@ chmod 755 start_web.sh
 
 gcc --version
 
+find / -name cc1 -print
+find / -name cc1plus -print
 whereis cc1
 
 mkdir -m 777 bin
