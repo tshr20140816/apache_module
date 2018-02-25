@@ -9,7 +9,8 @@ chmod 755 start_web.sh
 
 gcc --version
 
-find / -name libmpfr.so.4 -print
+find / -name as -print
+find / -name ld -print
 
 mkdir -m 777 bin
 mkdir -m 777 lib
