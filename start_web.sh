@@ -10,6 +10,7 @@ php --version
 whereis php
 cat /proc/version
 curl --version
+gcc --version
 printenv
 
 ls -lang
