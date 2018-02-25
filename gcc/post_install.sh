@@ -9,6 +9,8 @@ chmod 755 start_web.sh
 
 gcc --version
 
+whereis gcc
+
 export HOME2=${PWD}
 export PATH="/tmp/usr/bin:${PATH}"
 export LD_LIBRARY_PATH=/tmp/usr/lib
