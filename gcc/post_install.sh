@@ -11,6 +11,7 @@ gcc --version
 
 export HOME2=${PWD}
 export PATH="/tmp/usr/bin:${PATH}"
+export LD_LIBRARY_PATH=/tmp/usr/lib
 
 export CFLAGS="-march=native -O2"
 export CXXFLAGS="$CFLAGS"
