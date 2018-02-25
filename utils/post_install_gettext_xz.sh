@@ -69,9 +69,9 @@ base64 -w 0 usr_gettext.tar.bz2 > usr_gettext.tar.bz2.base64.txt
 set +x
 base64_text=$(cat /tmp/usr_gettext.tar.bz2.base64.txt)
 
-psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
-INSERT INTO t_files (file_name, file_base64_text) VALUES ('usr_gettext.tar.bz2', '${base64_text}');
-__HEREDOC__
+# psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+# INSERT INTO t_files (file_name, file_base64_text) VALUES ('usr_gettext.tar.bz2', '${base64_text}');
+# __HEREDOC__
 
 echo ${start_date}
 date
