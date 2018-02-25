@@ -12,13 +12,11 @@ gcc --version
 whereis uname
 whereis arch
 
-mkdir -m 777 -p /tmp/usr/bin/
 mkdir -m 777 bin
 
-cp -p /usr/bin/gcc /tmp/usr/bin/
 cp -p /usr/bin/gcc ./bin/
-
-ldd /tmp/usr/bin/gcc
+cp -p /bin/uname ./bin/
+cp -p /usr/bin/arch ./bin/
 
 echo ${start_date}
 date
