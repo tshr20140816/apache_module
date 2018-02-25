@@ -47,8 +47,8 @@ cd libarchive*
 
 ./configure --help
 ./configure --prefix=/tmp/usr
-
-exit
+time make -j2
+make install
 
 cd /tmp
 
