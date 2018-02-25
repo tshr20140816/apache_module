@@ -47,6 +47,10 @@ if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
   tar xf /tmp/usr.tar.bz2 -C /tmp/usr --strip=1
 fi
 
+# ***** extra *****
+
+cp /app/lib/libisl.so.15 /tmp/usr/lib/
+
 # ***** env *****
 
 export HOME2=${PWD}
