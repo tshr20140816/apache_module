@@ -41,7 +41,7 @@ cd pixz
 ./autogen.sh
 
 ./configure --help
-./configure --prefix=/tmp/usr
+./configure --prefix=/tmp/usr --without-manpage
 time make -j2
 make install
 
