@@ -5,6 +5,8 @@ set -x
 date
 start_date=$(date)
 
+chmod 755 start_web.sh
+
 gcc --version
 
 export PATH="/tmp/usr/bin:${PATH}"
