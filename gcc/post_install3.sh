@@ -9,7 +9,7 @@ chmod 755 start_web.sh
 
 gcc --version
 
-find / -name libbfd-2.26.1-system.so -print
+find / -name liblto_plugin.so -print
 
 mkdir -m 777 bin
 mkdir -m 777 lib
