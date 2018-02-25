@@ -33,6 +33,18 @@ cd xz
 time make -j2
 make install
 
+cd /tmp
+
+wget http://jnovy.fedorapeople.org/pxz/pxz-4.999.9beta.20091201git.tar.xz
+
+tar xf pxz-4.999.9beta.20091201git.tar.xz
+
+cd pxz*
+
+make -j2
+
+ls -Rlang
+
 cd /tmp/usr/bin
 
 ls -lang
