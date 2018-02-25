@@ -84,7 +84,7 @@ time ../configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc \
 time make -j${parallels}
 make install
 
-cat /tmp/gcc-7.3.0/work/config.loh
+cat /tmp/gcc-7.3.0/work/config.log
 
 echo ${start_date}
 date
