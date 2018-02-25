@@ -5,6 +5,8 @@ set -x
 date
 start_date=$(date)
 
+gcc --version
+
 export PATH="/tmp/usr/bin:${PATH}"
 
 export CFLAGS="-march=native -O2"
