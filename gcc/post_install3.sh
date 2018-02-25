@@ -9,7 +9,7 @@ chmod 755 start_web.sh
 
 gcc --version
 
-find / -name libopcodes-2.26.1-system.so -print
+find / -name libbfd-2.26.1-system.so -print
 
 mkdir -m 777 bin
 mkdir -m 777 lib
@@ -23,6 +23,7 @@ cp -p /usr/bin/ld ./bin/
 cp -p /usr/lib/x86_64-linux-gnu/libisl.so.15 ./lib/
 cp -p /usr/lib/x86_64-linux-gnu/libmpfr.so.4 ./lib/
 cp -p /usr/lib/x86_64-linux-gnu/libopcodes-2.26.1-system.so ./lib/
+cp -p /usr/lib/x86_64-linux-gnu/libbfd-2.26.1-system.so ./lib/
 
 echo ${start_date}
 date
