@@ -16,8 +16,6 @@ whereis cc1
 mkdir -m 777 bin
 
 cp -p /usr/bin/gcc ./bin/
-cp -p /bin/uname ./bin/
-cp -p /usr/bin/arch ./bin/
 cp -p /usr/lib/gcc/x86_64-linux-gnu/5/cc1 ./bin/
 cp -p /usr/lib/gcc/x86_64-linux-gnu/5/cc1plus ./bin/
 
