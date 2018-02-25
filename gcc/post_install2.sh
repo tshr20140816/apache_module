@@ -69,7 +69,9 @@ tar xf gcc-7.3.0.tar.gz
 cd gcc-7.3.0
 
 ./configure --help
-./configure 
+./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc \
+  --with-gmp==/tmp/usr --with-mpfr=/tmp/usr --with-mpc=/tmp/usr \
+  --disable-multilib
 
 time make -j${parallels}
 make install
