@@ -35,7 +35,7 @@ make install
 
 cd /tmp
 
-git cline --depth 1 https://github.com/vasi/pixz.git
+git clone --depth 1 https://github.com/vasi/pixz.git
 
 cd pixz
 ./autogen.sh
