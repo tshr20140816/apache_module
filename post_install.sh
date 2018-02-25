@@ -5,6 +5,8 @@ set -x
 date
 start_date=$(date)
 
+chmod 777 start_web.sh
+
 printenv
 
 postgres_user=$(echo ${DATABASE_URL} | awk -F':' '{print $2}' | sed -e 's/\///g')
@@ -37,8 +39,6 @@ SELECT file_name
  ORDER BY file_name
 __HEREDOC__
 cat /tmp/sql_result.txt
-
-chmod 777 start_web.sh
 
 export HOME2=${PWD}
 export PATH="/tmp/usr/bin:${PATH}"
