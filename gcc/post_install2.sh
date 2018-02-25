@@ -53,8 +53,8 @@ export HOME2=${PWD}
 export PATH="/app/bin:/tmp/usr/bin:${PATH}"
 export LD_LIBRARY_PATH=/tmp/usr/lib
 
-export CFLAGS="-march=native -O2"
-export CXXFLAGS="$CFLAGS"
+#export CFLAGS="-march=native -O2"
+#export CXXFLAGS="$CFLAGS"
 
 parallels=$(grep -c -e processor /proc/cpuinfo)
 
