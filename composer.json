@@ -12,6 +12,6 @@
   ,
   "scripts":
   {
-    "post-install-cmd" : "bash ./post_install2.sh"
+    "post-install-cmd" : "bash ./utils/post_install_gettext_xz.sh.sh"
   }
 }
