@@ -18,6 +18,8 @@ mkdir -m 777 lib
 cp -p /usr/bin/gcc ./bin/
 cp -p /usr/lib/gcc/x86_64-linux-gnu/5/cc1 ./bin/
 cp -p /usr/lib/gcc/x86_64-linux-gnu/5/cc1plus ./bin/
+cp -p /usr/bin/as ./bin/
+cp -p /usr/bin/ld ./bin/
 
 cp -p /usr/lib/x86_64-linux-gnu/libisl.so.15 ./lib/
 cp -p /usr/lib/x86_64-linux-gnu/libmpfr.so.4 ./lib/
