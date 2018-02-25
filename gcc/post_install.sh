@@ -51,7 +51,7 @@ wget https://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz
 tar xf mpc-1.1.0.tar.gz
 cd mpc-1.1.0
 ./configure --help
-./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc
+./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc --with-gmp==/tmp/usr --with-mpfr=/tmp/usr
 time make -j${parallels}
 make install
 
