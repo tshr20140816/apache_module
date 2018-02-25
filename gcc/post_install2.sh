@@ -50,7 +50,7 @@ fi
 # ***** env *****
 
 export HOME2=${PWD}
-export PATH="/tmp/usr/bin:${PATH}"
+export PATH="/app/bin:/tmp/usr/bin:${PATH}"
 export LD_LIBRARY_PATH=/tmp/usr/lib
 
 export CFLAGS="-march=native -O2"
