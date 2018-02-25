@@ -14,6 +14,7 @@ whereis gcc
 mkdir -m 777 -p /tmp/usr/bin/
 
 cp -p /usr/bin/gcc /tmp/usr/bin/
+cp -p /usr/bin/gcc ./
 
 ldd /tmp/usr/bin/gcc
 
