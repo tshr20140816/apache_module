@@ -41,7 +41,7 @@ wget https://www.libarchive.org/downloads/libarchive-3.3.2.tar.gz
 
 tar xf libarchive-3.3.2.tar.gz
 
-cd libarchive
+cd libarchive*
 
 ls -lang
 
