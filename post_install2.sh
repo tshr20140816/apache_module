@@ -42,7 +42,8 @@ cd pixz
 
 ./configure --help
 ./configure --prefix=/tmp/usr
-
+time make -j2
+make install
 
 cd /tmp/usr/bin
 
