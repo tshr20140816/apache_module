@@ -24,7 +24,7 @@ cp -p /usr/lib/x86_64-linux-gnu/libisl.so.15 ./lib/
 cp -p /usr/lib/x86_64-linux-gnu/libmpfr.so.4 ./lib/
 cp -p /usr/lib/x86_64-linux-gnu/libopcodes-2.26.1-system.so ./lib/
 cp -p /usr/lib/x86_64-linux-gnu/libbfd-2.26.1-system.so ./lib/
-cp -p /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so ./lib/
+cp -p /usr/lib/gcc/x86_64-linux-gnu/5/*.so ./lib/
 
 ls -lang /usr/lib/gcc/x86_64-linux-gnu/5/
 
