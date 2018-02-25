@@ -37,6 +37,18 @@ make install
 
 cd /tmp
 
+wget https://www.libarchive.org/downloads/libarchive-3.3.2.tar.gz
+
+tar xf libarchive-3.3.2.tar.gz
+
+cd libarchive
+
+ls -lang
+
+exit
+
+cd /tmp
+
 git clone --depth 1 https://github.com/vasi/pixz.git
 
 cd pixz
