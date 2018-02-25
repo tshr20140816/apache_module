@@ -49,7 +49,7 @@ fi
 
 # ***** extra *****
 
-cp /app/lib/* /tmp/usr/lib/
+cp /app/lib/lib* /tmp/usr/lib/
 
 # ***** env *****
 
