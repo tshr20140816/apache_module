@@ -54,16 +54,18 @@ cd mpc-1.1.0
 time make -j${parallels}
 make install
 
+# ***** gcc ******
+
 cd /tmp
 
-#wget http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-7.3.0/gcc-7.3.0.tar.gz
+wget http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-7.3.0/gcc-7.3.0.tar.gz
 
-#tar xf gcc-7.3.0.tar.gz
+tar xf gcc-7.3.0.tar.gz
 
-#cd gcc-7.3.0
+cd gcc-7.3.0
 
-#./configure --help
-#./configure --prefix=/tmp/usr
+./configure --help
+./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc
 
 cd /tmp/usr
 
