@@ -12,6 +12,7 @@ gcc --version
 find / -name libisl.so.15 -print
 
 mkdir -m 777 bin
+mkdir -m 777 lib
 
 cp -p /usr/bin/gcc ./bin/
 cp -p /usr/lib/gcc/x86_64-linux-gnu/5/cc1 ./bin/
