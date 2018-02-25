@@ -9,8 +9,7 @@ chmod 755 start_web.sh
 
 gcc --version
 
-find / -name as -print
-find / -name ld -print
+find / -name libopcodes-2.26.1-system.so -print
 
 mkdir -m 777 bin
 mkdir -m 777 lib
