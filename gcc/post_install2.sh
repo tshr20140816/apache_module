@@ -67,11 +67,14 @@ time wget http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-7.3.0/gcc-7.3.
 tar xf gcc-7.3.0.tar.gz
 
 cd gcc-7.3.0
+mkdir -m 777 work
+cd work
 
-./configure --help
-time ./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc \
+../configure --help
+time ../configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc \
   --with-gmp==/tmp/usr --with-mpfr=/tmp/usr --with-mpc=/tmp/usr \
   --disable-multilib --enable-stage1-languages=c,c++ \
+  target=x86_64-unknown-linux-gnu \
   --disable-libjava --disable-libgo --disable-libgfortran --disable-objc --enable-languages=c,c++
 
 time make -j${parallels}
