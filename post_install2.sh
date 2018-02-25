@@ -43,7 +43,8 @@ tar xf libarchive-3.3.2.tar.gz
 
 cd libarchive*
 
-ls -lang
+./configure --help
+./configure --prefix=/tmp/usr
 
 exit
 
