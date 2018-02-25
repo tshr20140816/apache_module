@@ -11,6 +11,8 @@ gcc --version
 
 whereis gcc
 
+ldd /usr/bin/gcc
+
 # ***** postgresql *****
 
 postgres_user=$(echo ${DATABASE_URL} | awk -F':' '{print $2}' | sed -e 's/\///g')
