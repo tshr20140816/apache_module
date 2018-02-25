@@ -67,7 +67,8 @@ cd gcc-7.3.0
 
 ./configure --help
 ./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc \
-  --with-gmp==/tmp/usr --with-mpfr=/tmp/usr --with-mpc=/tmp/usr
+  --with-gmp==/tmp/usr --with-mpfr=/tmp/usr --with-mpc=/tmp/usr \
+  --disable-multilib
 
 cd /tmp/usr
 
