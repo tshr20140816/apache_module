@@ -62,16 +62,17 @@ parallels=$(grep -c -e processor /proc/cpuinfo)
 
 cd /tmp
 
-wget http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-7.3.0/gcc-7.3.0.tar.gz
+time wget http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-7.3.0/gcc-7.3.0.tar.gz
 
 tar xf gcc-7.3.0.tar.gz
 
 cd gcc-7.3.0
 
 ./configure --help
-./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc \
+time ./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc \
   --with-gmp==/tmp/usr --with-mpfr=/tmp/usr --with-mpc=/tmp/usr \
-  --disable-multilib
+  --disable-multilib --enable-stage1-languages=c,c++ \
+  --disable-libjava --disable-libgo --disable-libgfortran --disable-objc --enable-languages=c,c++
 
 time make -j${parallels}
 make install
