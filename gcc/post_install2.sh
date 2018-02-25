@@ -49,7 +49,7 @@ fi
 
 # ***** extra *****
 
-cp /app/lib/libisl.so.15 /tmp/usr/lib/
+cp /app/lib/* /tmp/usr/lib/
 
 # ***** env *****
 
