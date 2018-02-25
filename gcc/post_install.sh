@@ -118,7 +118,7 @@ time tar -jcf usr.tar.bz2 usr
 base64 -w 0 usr.tar.bz2 > usr.tar.bz2.base64.txt
 
 set +x
-base64_text=$(cat /tmp/ccache_cache.tar.bz2.base64.txt)
+base64_text=$(cat /tmp/usr.tar.bz2.base64.txt)
 
 psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
 INSERT INTO t_files (file_name, file_base64_text) VALUES ('usr.tar.bz2', '${base64_text}');
