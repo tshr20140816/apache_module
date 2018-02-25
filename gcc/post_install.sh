@@ -17,7 +17,7 @@ export CXXFLAGS="$CFLAGS"
 
 parallels=$(grep -c -e processor /proc/cpuinfo)
 
-# ***** GMP ******
+# ***** gmp ******
 
 cd /tmp
 
@@ -37,6 +37,18 @@ cd /tmp
 wget http://www.mpfr.org/mpfr-current/mpfr-4.0.1.tar.gz
 tar xf mpfr-4.0.1.tar.gz
 cd mpfr-4.0.1
+./configure --help
+./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc
+time make -j${parallels}
+make install
+
+# ***** mpc ******
+
+cd /tmp
+
+wget https://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz
+tar xf mpc-1.1.0.tar.gz
+cd mpc-1.1.0
 ./configure --help
 ./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc
 time make -j${parallels}
