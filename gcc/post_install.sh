@@ -66,11 +66,14 @@ tar xf gcc-7.3.0.tar.gz
 cd gcc-7.3.0
 
 ./configure --help
-./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc
+./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc \
+  --with-gmp==/tmp/usr --with-mpfr=/tmp/usr --with-mpc=/tmp/usr
 
 cd /tmp/usr
 
 ls -Ralng
+
+df ./ -mh
 
 echo ${start_date}
 date
