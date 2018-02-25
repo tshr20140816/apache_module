@@ -9,8 +9,7 @@ chmod 755 start_web.sh
 
 gcc --version
 
-whereis uname
-whereis arch
+whereis cc1
 
 mkdir -m 777 bin
 
