@@ -12,9 +12,10 @@ gcc --version
 whereis gcc
 
 mkdir -m 777 -p /tmp/usr/bin/
+mkdir -m 777 bin
 
 cp -p /usr/bin/gcc /tmp/usr/bin/
-cp -p /usr/bin/gcc ./
+cp -p /usr/bin/gcc ./bin/
 
 ldd /tmp/usr/bin/gcc
 
