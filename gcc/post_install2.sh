@@ -27,6 +27,8 @@ echo ${postgres_dbname}
 
 export PGPASSWORD=${postgres_password}
 
+# ***** utils *****
+
 cd /tmp
 
 mkdir -m 777 usr
@@ -45,9 +47,32 @@ if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
   tar xf /tmp/usr.tar.bz2 -C /tmp/usr --strip=1
 fi
 
-cd /tmp/usr
+# ***** env *****
 
-ls -Rlang
+export HOME2=${PWD}
+export PATH="/tmp/usr/bin:${PATH}"
+export LD_LIBRARY_PATH=/tmp/usr/lib
+
+export CFLAGS="-march=native -O2"
+export CXXFLAGS="$CFLAGS"
+
+parallels=$(grep -c -e processor /proc/cpuinfo)
+
+# ***** gcc *****
+
+cd /tmp
+
+wget http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-7.3.0/gcc-7.3.0.tar.gz
+
+tar xf gcc-7.3.0.tar.gz
+
+cd gcc-7.3.0
+
+./configure --help
+./configure 
+
+time make -j${parallels}
+make install
 
 echo ${start_date}
 date
