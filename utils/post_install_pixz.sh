@@ -89,6 +89,7 @@ cd pixz
 
 ./configure --help
 # LIBARCHIVE_LIBS=$HOME/pixz_build/lib/libarchive.a LZMA_LIBS=$HOME/pixz_build/lib/liblzma.a ./configure --prefix="$HOME/pixz_build"
+ls -lang /tmp/usr/lib/libarchive.a
 LIBARCHIVE_LIBS=/tmp/usr/lib/libarchive.a ./configure --prefix=/tmp/usr --without-manpage
 time make -j2
 make install
