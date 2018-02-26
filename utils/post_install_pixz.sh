@@ -72,7 +72,7 @@ tar xf libarchive-3.3.2.tar.gz
 cd libarchive*
 
 ./configure --help
-./configure --prefix=/tmp/usr
+./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc
 time make -j2
 make install
 
