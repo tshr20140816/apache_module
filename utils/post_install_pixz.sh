@@ -77,6 +77,9 @@ cd libarchive*
 time make -j2
 make install
 
+export PKG_CONFIG_PATH=/tmp/usr/lib/pkgconfig
+pkg-config --exists --print-errors "libarchive"
+
 ls -Rlang /tmp/usr
 
 # ***** pixz *****
