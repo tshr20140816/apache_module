@@ -104,8 +104,8 @@ ldd /tmp/usr/bin/pixz
 
 cd /tmp
 
-time tar Jvf libarchive1.tar.xz --use-compress-prog=pixz libarchive-3.3.2
-time tar Jvf libarchive2.tar.xz --use-compress-prog=xz libarchive-3.3.2
+time tar cf libarchive1.tar.xz --use-compress-prog=pixz libarchive-3.3.2
+time tar cf libarchive2.tar.xz --use-compress-prog=xz libarchive-3.3.2
 
 ls -lang
 
