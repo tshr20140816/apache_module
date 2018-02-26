@@ -23,6 +23,14 @@ echo ${postgres_dbname}
 
 export PGPASSWORD=${postgres_password}
 
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+SELECT file_name
+      ,length(file_base64_text)
+  FROM t_files
+ ORDER BY file_name
+__HEREDOC__
+cat /tmp/sql_result.txt
+
 # ***** env *****
 
 export PATH="/tmp/usr/bin:${PATH}"
