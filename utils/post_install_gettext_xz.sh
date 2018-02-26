@@ -39,7 +39,8 @@ wget http://ftp.gnu.org/pub/gnu/gettext/gettext-latest.tar.gz
 tar xf gettext-latest.tar.gz
 cd gettext*
 ./configure --help
-./configure --prefix=/tmp/usr --disable-java --disable-native-java --without-emacs
+./configure --prefix=/tmp/usr --disable-java --disable-native-java --without-emacs \
+  --mandir=/tmp/man --docdir=/tmp/doc
 make -j2
 make install
 
@@ -53,7 +54,8 @@ cd xz
 ./autogen.sh
 
 ./configure --help
-./configure --prefix=/tmp/usr
+./configure --prefix=/tmp/usr \
+  --mandir=/tmp/man --docdir=/tmp/doc
 time make -j2
 make install
 
@@ -62,16 +64,17 @@ make install
 cd /tmp
 time tar -jcf usr_gettext.tar.bz2 usr
 
-ls -lang
-
 base64 -w 0 usr_gettext.tar.bz2 > usr_gettext.tar.bz2.base64.txt
+
+ls -lang
 
 set +x
 base64_text=$(cat /tmp/usr_gettext.tar.bz2.base64.txt)
 
-# psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
-# INSERT INTO t_files (file_name, file_base64_text) VALUES ('usr_gettext.tar.bz2', '${base64_text}');
-# __HEREDOC__
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+INSERT INTO t_files (file_name, file_base64_text) VALUES ('usr_gettext.tar.bz2', '${base64_text}');
+__HEREDOC__
+set -x
 
 echo ${start_date}
 date
