@@ -98,5 +98,7 @@ LIBARCHIVE_LIBS=/tmp/usr/lib/libarchive.a ./configure --prefix=/tmp/usr --withou
 time make -j2
 make install
 
+ls -Rlang /tmp/usr
+
 echo ${start_date}
 date
