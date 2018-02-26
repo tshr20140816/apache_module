@@ -34,9 +34,32 @@ cat /tmp/sql_result.txt
 # ***** env *****
 
 export PATH="/tmp/usr/bin:${PATH}"
+export LD_LIBRARY_PATH=/tmp/usr/lib
 
 export CFLAGS="-march=native -O2"
 export CXXFLAGS="$CFLAGS"
+
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+SELECT file_base64_text
+  FROM t_files
+ WHERE file_name = 'usr.tar.bz2'
+__HEREDOC__
+
+# ***** /tmp/usr *****
+
+cd /tmp
+
+mkdir -m 777 usr
+
+set +x
+echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/usr.tar.bz2.base64.txt
+set -x
+base64 -d /tmp/usr.tar.bz2.base64.txt > /tmp/usr.tar.bz2
+tar xf /tmp/usr.tar.bz2 -C /tmp/usr --strip=1
+
+cd usr
+
+ls -Rlang
 
 # ***** libarchive *****
 
