@@ -9,6 +9,7 @@ chmod 755 start_web.sh
 
 gcc --version
 
+# https://packages.ubuntu.com/xenial/gdebi
 # https://packages.ubuntu.com/xenial-updates/devel/gcc-5
 
 cd /tmp
