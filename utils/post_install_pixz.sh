@@ -76,6 +76,8 @@ cd libarchive*
 time make -j2
 make install
 
+ls -Rlang /tmp/usr
+
 # ***** pixz *****
 
 cd /tmp
