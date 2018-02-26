@@ -70,7 +70,7 @@ wget https://www.libarchive.org/downloads/libarchive-3.3.2.tar.gz
 
 tar xf libarchive-3.3.2.tar.gz
 
-cd libarchive*
+cd libarchive-3.3.2
 
 ./configure --help
 ./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc
@@ -101,6 +101,13 @@ make install
 ls -Rlang /tmp/usr
 
 ldd /tmp/usr/bin/pixz
+
+cd /tmp
+
+time tar Jvf libarchive1.tar.xz --use-compress-prog=pixz libarchive-3.3.2
+time tar Jvf libarchive2.tar.xz --use-compress-prog=xz libarchive-3.3.2
+
+ls -lang
 
 echo ${start_date}
 date
