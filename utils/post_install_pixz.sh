@@ -8,6 +8,7 @@ start_date=$(date)
 chmod 755 start_web.sh
 
 gcc --version
+pkg-config --help
 
 # ***** postgresql *****
 
