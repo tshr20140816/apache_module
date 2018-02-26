@@ -88,7 +88,8 @@ cd pixz
 ./autogen.sh
 
 ./configure --help
-./configure --prefix=/tmp/usr --without-manpage
+# LIBARCHIVE_LIBS=$HOME/pixz_build/lib/libarchive.a LZMA_LIBS=$HOME/pixz_build/lib/liblzma.a ./configure --prefix="$HOME/pixz_build"
+LIBARCHIVE_LIBS=/tmp/usr/lib/libarchive.a ./configure --prefix=/tmp/usr --without-manpage
 time make -j2
 make install
 
