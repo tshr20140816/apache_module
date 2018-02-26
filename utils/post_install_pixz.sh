@@ -106,6 +106,7 @@ cd /tmp
 
 time tar cf libarchive1.tar.xz --use-compress-prog=pixz libarchive-3.3.2
 time tar cf libarchive2.tar.xz --use-compress-prog=xz libarchive-3.3.2
+time tar jcf libarchive3.tar.bz2 libarchive-3.3.2
 
 ls -lang
 
