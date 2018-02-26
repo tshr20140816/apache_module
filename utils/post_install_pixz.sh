@@ -100,5 +100,7 @@ make install
 
 ls -Rlang /tmp/usr
 
+ldd /tmp/usr/bin/pixz
+
 echo ${start_date}
 date
