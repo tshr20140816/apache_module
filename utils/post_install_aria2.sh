@@ -75,7 +75,7 @@ cd aria2-release-1.33.1
 autoreconf -i
 
 ./configure --help
-./configure --prefix=/tmp/usr
+./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc
 
 ls -lang
 
