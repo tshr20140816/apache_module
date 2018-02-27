@@ -75,7 +75,7 @@ cd aria2-release-1.33.1
 autoreconf -i
 
 ./configure --help
-ARIA2_STATIC=yes ./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc --enable-static=yes --enable-libaria2
+./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc ARIA2_STATIC=yes
 time make -j2
 make install
 
