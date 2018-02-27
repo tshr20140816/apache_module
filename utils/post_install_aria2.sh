@@ -123,7 +123,7 @@ autoreconf -i
 
 ./configure --help
 # ./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc ARIA2_STATIC=yes
-./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc
+LIBARCHIVE_LIBS=/tmp/usr/lib/liblzma.a ./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc
 time make -j2
 make install
 
