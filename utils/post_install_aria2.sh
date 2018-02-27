@@ -79,10 +79,20 @@ autoreconf -i
 time make -j8
 make install
 
+# ***** tar *****
+
+cd /tmp
+time tar -jcf usr_gettext.tar.bz2 usr
+
+base64 -w 0 usr_gettext.tar.bz2 > usr_gettext.tar.bz2.base64.txt
+
+set +x
+base64_text=$(cat /tmp/usr_gettext.tar.bz2.base64.txt)
+
 psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
-INSERT INTO t_files (file_name, file_base64_text) VALUES ('dummy','dummy');
+INSERT INTO t_files (file_name, file_base64_text) VALUES ('usr_gettext_aria2.tar.bz2', '${base64_text}');
 __HEREDOC__
-cat /tmp/sql_result.txt
+set -x
 
 ls -Rlang /tmp/usr
 
