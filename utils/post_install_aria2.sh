@@ -58,6 +58,10 @@ set -x
 base64 -d /tmp/usr.tar.bz2.base64.txt > /tmp/usr.tar.bz2
 tar xf /tmp/usr.tar.bz2 -C /tmp/usr --strip=1
 
+cd usr
+
+ls -Rlang
+
 # ***** aria2 *****
 
 cd /tmp
