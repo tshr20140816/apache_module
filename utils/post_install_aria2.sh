@@ -76,7 +76,7 @@ autoreconf -i
 
 ./configure --help
 ./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc ARIA2_STATIC=yes
-time make -j4
+time make -j8
 make install
 
 psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
