@@ -83,7 +83,7 @@ autoreconf -i
 
 ./configure --help
 ./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc ARIA2_STATIC=yes
-time make -j8
+time make -j8 | tee -a /tmp/make_aria2_log.txt
 make install
 
 # ***** tar *****
@@ -100,6 +100,20 @@ psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_
 INSERT INTO t_files (file_name, file_base64_text) VALUES ('usr_gettext_aria2.tar.bz2', '${base64_text}');
 __HEREDOC__
 set -x
+
+
+cd /tmp
+
+base64 -w 0 make_aria2_log.txt > make_aria2_log.base64.txt
+
+set +x
+base64_text=$(cat /tmp/make_aria2_log.base64.txt)
+
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+INSERT INTO t_files (file_name, file_base64_text) VALUES ('make_aria2_log.txt', '${base64_text}');
+__HEREDOC__
+set -x
+
 
 ls -Rlang /tmp/usr
 
