@@ -25,15 +25,6 @@ echo ${postgres_dbname}
 export PGPASSWORD=${postgres_password}
 
 psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
-CREATE TABLE t_files (
-  file_name character varying(255) NOT NULL
- ,file_base64_text text NOT NULL
-);
-ALTER TABLE t_files ADD CONSTRAINT table_key PRIMARY KEY(file_name);
-__HEREDOC__
-cat /tmp/sql_result.txt
-
-psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
 SELECT file_name
       ,length(file_base64_text)
   FROM t_files
