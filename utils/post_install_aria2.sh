@@ -26,7 +26,13 @@ export PGPASSWORD=${postgres_password}
 
 # *****
 
+cd /tmp
 
+wget https://github.com/aria2/aria2/archive/release-1.33.1.tar.gz
+
+tar xf release-1.33.1.tar.gz
+
+ls -lang
 
 echo ${start_date}
 date
