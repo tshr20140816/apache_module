@@ -42,7 +42,7 @@ export CXXFLAGS="$CFLAGS"
 psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
 SELECT file_base64_text
   FROM t_files
- WHERE file_name = 'usr_gettext.tar.bz2'
+ WHERE file_name = 'usr_gettext_aria2.tar.bz2'
 __HEREDOC__
 
 # ***** /tmp/usr *****
