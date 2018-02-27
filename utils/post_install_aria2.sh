@@ -71,11 +71,13 @@ ls -Rlang
 
 # ***** ccache *****
 
+cd /tmp
+
 wget https://www.samba.org/ftp/ccache/ccache-3.3.4.tar.gz
 tar xf ccache-3.3.4.tar.gz
 cd ccache-3.3.4
 ./configure --help
-./configure --prefix=/tmp/usr
+./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install
 
