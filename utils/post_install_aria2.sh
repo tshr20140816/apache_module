@@ -32,6 +32,10 @@ wget https://github.com/aria2/aria2/archive/release-1.33.1.tar.gz
 
 tar xf release-1.33.1.tar.gz
 
+cd aria2-release-1.33.1
+
+./configure --help
+
 ls -lang
 
 echo ${start_date}
