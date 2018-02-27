@@ -68,13 +68,14 @@ make -j2
 cp -p pigz unpigz /tmp/usr/bin/
 
 cd /tmp
-time aria2c -x4 https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.tar.gz
-# rm cmake-3.10.2-Linux-x86_64.tar.gz
-# time wget https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.tar.gz
-time tar xf cmake-3.10.2-Linux-x86_64.tar.gz
-rm -rf cmake-3.10.2-Linux-x86_64
-time pigz -d cmake-3.10.2-Linux-x86_64.tar.gz
-time tar xf cmake-3.10.2-Linux-x86_64.tar
+time aria2c -x4 http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-7.3.0/gcc-7.3.0.tar.gz
+rm gcc-7.3.0.tar.gz
+time wget http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-7.3.0/gcc-7.3.0.tar.gz
+
+#time tar xf cmake-3.10.2-Linux-x86_64.tar.gz
+#rm -rf cmake-3.10.2-Linux-x86_64
+#time pigz -d cmake-3.10.2-Linux-x86_64.tar.gz
+#time tar xf cmake-3.10.2-Linux-x86_64.tar
 
 ls -lang
 
