@@ -59,5 +59,23 @@ tar xf /tmp/usr.tar.bz2 -C /tmp/usr --strip=1
 
 ls -Rlang /tmp/usr
 
+
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+SELECT file_base64_text
+  FROM t_files
+ WHERE file_name = 'make_aria2_log.txt'
+__HEREDOC__
+
+cd /tmp
+
+mkdir -m 777 usr
+
+set +x
+echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/make_aria2_log.base64.txt
+set -x
+base64 -d /tmp/make_aria2_log.base64.txt > /tmp/make_aria2_log.txt
+
+cat /tmp/make_aria2_log.txt
+
 echo ${start_date}
 date
