@@ -60,7 +60,7 @@ tar xf /tmp/usr.tar.bz2 -C /tmp/usr --strip=1
 ls -Rlang /tmp/usr
 
 cd /tmp
-wget http://zlib.net/pigz/pigz-2.4.tar.gz
+# wget http://zlib.net/pigz/pigz-2.4.tar.gz
 
 tar xf pigz-2.4.tar.gz
 cd pigz-2.4
