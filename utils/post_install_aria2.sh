@@ -36,7 +36,7 @@ cat /tmp/sql_result.txt
 psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
 DELETE
   FROM t_files
- WHERE file_name IN ('usr_gettext_aria2.tar.bz2', 'make_aria2_log.txt', 'ccache_aria2_cache.tar.bz2')
+ WHERE file_name IN ('usr_gettext_aria2.tar.bz2')
 __HEREDOC__
 cat /tmp/sql_result.txt
 
