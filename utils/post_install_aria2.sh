@@ -32,6 +32,13 @@ SELECT file_name
 __HEREDOC__
 cat /tmp/sql_result.txt
 
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+DELETE
+  FROM t_files
+ WHERE file_name='usr_gettext_aria2.tar.bz2'
+__HEREDOC__
+cat /tmp/sql_result.txt
+
 # ***** env *****
 
 export PATH="/tmp/usr/bin:${PATH}"
@@ -82,12 +89,12 @@ make install
 # ***** tar *****
 
 cd /tmp
-time tar -jcf usr_gettext.tar.bz2 usr
+time tar -jcf usr_gettext_aria2.tar.bz2 usr
 
-base64 -w 0 usr_gettext.tar.bz2 > usr_gettext.tar.bz2.base64.txt
+base64 -w 0 usr_gettext_aria2.tar.bz2 > usr_gettext_aria2.tar.bz2.base64.txt
 
 set +x
-base64_text=$(cat /tmp/usr_gettext.tar.bz2.base64.txt)
+base64_text=$(cat /tmp/usr_gettext_aria2.tar.bz2.base64.txt)
 
 psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
 INSERT INTO t_files (file_name, file_base64_text) VALUES ('usr_gettext_aria2.tar.bz2', '${base64_text}');
