@@ -63,8 +63,12 @@ cd /tmp
 time aria2c -x2 http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.29.tar.bz2
 rm httpd-2.4.29.tar.bz2
 time wget http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.29.tar.bz2
-
-wget http://www.apache.org/dyn/closer.cgi/httpd/ -O -
+rm httpd-2.4.29.tar.bz2
+time aria2c -x2 http://apache.claz.org/httpd/httpd-2.4.29.tar.bz2
+rm httpd-2.4.29.tar.bz2
+time aria2c -x2 http://apache.claz.org/httpd/httpd-2.4.29.tar.bz2
+rm httpd-2.4.29.tar.bz2
+# wget http://www.apache.org/dyn/closer.cgi/httpd/ -O -
 
 echo ${start_date}
 date
