@@ -70,5 +70,9 @@ time aria2c -x2 http://apache.claz.org/httpd/httpd-2.4.29.tar.bz2
 rm httpd-2.4.29.tar.bz2
 # wget http://www.apache.org/dyn/closer.cgi/httpd/ -O -
 
+time aria2c http://apache.cs.utah.edu/httpd/httpd-2.4.29.tar.bz2 http://apache.claz.org/httpd/httpd-2.4.29.tar.bz2 \
+  http://apache.mesi.com.ar/httpd/httpd-2.4.29.tar.bz2
+rm httpd-2.4.29.tar.bz2
+
 echo ${start_date}
 date
