@@ -76,8 +76,10 @@ autoreconf -i
 
 ./configure --help
 ./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc
+time make
+make install
 
-ls -lang
+ls -Rlang /tmp/usr
 
 echo ${start_date}
 date
