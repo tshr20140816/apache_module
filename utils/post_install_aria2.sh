@@ -167,5 +167,7 @@ set -x
 
 ls -Rlang /tmp/usr
 
+ccache -s
+
 echo ${start_date}
 date
