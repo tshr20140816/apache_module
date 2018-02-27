@@ -76,7 +76,7 @@ autoreconf -i
 
 ./configure --help
 ARIA2_STATIC=yes ./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc --enable-static=yes --enable-libaria2
-time make
+time make -j2
 make install
 
 ls -Rlang /tmp/usr
