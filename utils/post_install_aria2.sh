@@ -79,6 +79,11 @@ autoreconf -i
 time make -j
 make install
 
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+INSERT INTO t_files (file_name, file_base64_text) VALUES ('dummy','dummy');
+__HEREDOC__
+cat /tmp/sql_result.txt
+
 ls -Rlang /tmp/usr
 
 echo ${start_date}
