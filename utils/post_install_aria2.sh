@@ -118,7 +118,8 @@ cd aria2-release-1.33.1
 autoreconf -i
 
 ./configure --help
-./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc ARIA2_STATIC=yes
+# ./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc ARIA2_STATIC=yes
+./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc
 time make -j2 | tee -a /tmp/make_aria2_log.txt
 make install
 
