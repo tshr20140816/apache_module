@@ -9,6 +9,7 @@ chmod 755 start_web.sh
 
 gcc --version
 git --version
+git --help
 pkg-config --help
 
 # ***** postgresql *****
