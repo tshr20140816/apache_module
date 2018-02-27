@@ -73,9 +73,11 @@ time aria2c -x4 https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.tar.gz
 # time wget https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.tar.gz
 time tar xf cmake-3.10.2-Linux-x86_64.tar.gz --use-compress-program=pigz
 rm -rf cmake-3.10.2-Linux-x86_64
-time tar xf cmake-3.10.2-Linux-x86_64.tar.gz
+time unpigz cmake-3.10.2-Linux-x86_64.tar.gz
 
-tar --help
+ls -lang
+
+# tar --help
 
 echo ${start_date}
 date
