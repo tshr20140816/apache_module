@@ -8,6 +8,7 @@ start_date=$(date)
 chmod 755 start_web.sh
 
 gcc --version
+git --version
 pkg-config --help
 
 # ***** postgresql *****
@@ -35,7 +36,7 @@ cat /tmp/sql_result.txt
 psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
 DELETE
   FROM t_files
- WHERE file_name IN ('usr_gettext_aria2.tar.bz2', 'make_aria2_log.txt')
+ WHERE file_name IN ('usr_gettext_aria2.tar.bz2', 'make_aria2_log.txt', 'ccache_aria2_cache.tar.bz2')
 __HEREDOC__
 cat /tmp/sql_result.txt
 
@@ -93,7 +94,7 @@ export CCACHE_DIR=/tmp/ccache
 psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
 SELECT file_base64_text
   FROM t_files
- WHERE file_name = 'ccache_aria2_cache.tar.bz2'
+ WHERE file_name = 'ccache_cache.aria2.tar.bz2'
 __HEREDOC__
 
 if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
@@ -122,7 +123,7 @@ autoreconf -i
 ./configure --help
 # ./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc ARIA2_STATIC=yes
 ./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc
-time make -j2 | tee -a /tmp/make_aria2_log.txt
+time make -j2
 make install
 
 # ***** tar *****
@@ -141,17 +142,6 @@ __HEREDOC__
 set -x
 
 cd /tmp
-base64 -w 0 make_aria2_log.txt > make_aria2_log.base64.txt
-
-set +x
-base64_text=$(cat /tmp/make_aria2_log.base64.txt)
-
-psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
-INSERT INTO t_files (file_name, file_base64_text) VALUES ('make_aria2_log.txt', '${base64_text}');
-__HEREDOC__
-set -x
-
-cd /tmp
 time tar -jcf ccache_cache.tar.bz2 ccache
 base64 -w 0 ccache_cache.tar.bz2 > ccache_cache.tar.bz2.base64.txt
 
@@ -161,13 +151,15 @@ set +x
 base64_text=$(cat /tmp/ccache_cache.tar.bz2.base64.txt)
 
 psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
-INSERT INTO t_files (file_name, file_base64_text) VALUES ('ccache_aria2_cache.tar.bz2', '${base64_text}');
+INSERT INTO t_files (file_name, file_base64_text) VALUES ('ccache_cache.aria2.tar.bz2', '${base64_text}');
 __HEREDOC__
 set -x
 
 ls -Rlang /tmp/usr
 
 ccache -s
+
+ldd /tmp/usr/bin/aria2
 
 echo ${start_date}
 date
