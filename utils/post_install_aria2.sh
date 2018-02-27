@@ -75,6 +75,7 @@ cd aria2-release-1.33.1
 autoreconf -i
 
 ./configure --help
+./configure --prefix=/tmp/usr
 
 ls -lang
 
