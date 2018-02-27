@@ -60,19 +60,10 @@ tar xf /tmp/usr.tar.bz2 -C /tmp/usr --strip=1
 ls -Rlang /tmp/usr
 
 cd /tmp
-time aria2c -x2 http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.29.tar.bz2
-rm httpd-2.4.29.tar.bz2
-time wget http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.29.tar.bz2
-rm httpd-2.4.29.tar.bz2
-time aria2c -x2 http://apache.claz.org/httpd/httpd-2.4.29.tar.bz2
-rm httpd-2.4.29.tar.bz2
-time wget http://apache.claz.org/httpd/httpd-2.4.29.tar.bz2
-rm httpd-2.4.29.tar.bz2
-# wget http://www.apache.org/dyn/closer.cgi/httpd/ -O -
-
-time aria2c http://apache.cs.utah.edu/httpd/httpd-2.4.29.tar.bz2 http://apache.claz.org/httpd/httpd-2.4.29.tar.bz2 \
-  http://apache.mesi.com.ar/httpd/httpd-2.4.29.tar.bz2
-rm httpd-2.4.29.tar.bz2
+time aria2c -x4 https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.tar.gz
+rm cmake-3.10.2-Linux-x86_64.tar.gz
+time wget https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.tar.gz
+rm cmake-3.10.2-Linux-x86_64.tar.gz
 
 echo ${start_date}
 date
