@@ -119,7 +119,7 @@ autoreconf -i
 
 ./configure --help
 ./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc ARIA2_STATIC=yes
-time make -j8 | tee -a /tmp/make_aria2_log.txt
+time make -j2 | tee -a /tmp/make_aria2_log.txt
 make install
 
 # ***** tar *****
