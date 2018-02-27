@@ -160,7 +160,7 @@ ls -Rlang /tmp/usr
 
 ccache -s
 
-ldd /tmp/usr/bin/aria2
+ldd /tmp/usr/bin/aria2c
 
 echo ${start_date}
 date
