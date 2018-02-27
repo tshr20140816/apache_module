@@ -34,6 +34,8 @@ tar xf release-1.33.1.tar.gz
 
 cd aria2-release-1.33.1
 
+autoreconf -i
+
 ./configure --help
 
 ls -lang
