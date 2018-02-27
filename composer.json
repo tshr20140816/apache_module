@@ -12,6 +12,6 @@
   ,
   "scripts":
   {
-    "post-install-cmd" : "bash ./utils/post_install_pixz.sh"
+    "post-install-cmd" : "bash ./utils/post_install_aria2.sh"
   }
 }
