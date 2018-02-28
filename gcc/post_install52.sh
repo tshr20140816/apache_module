@@ -129,25 +129,27 @@ time ../configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc \
   target=x86_64-pc-linux-gnu \
   --disable-libjava --disable-libgo --disable-libgfortran --disable-objc --enable-languages=c,c++
 
-time make -j${parallels} | tee /tmp/make.gcc.log.txt
+# time make -j${parallels} | tee /tmp/make.gcc.log.txt
+
+bash ${HOME2}/gcc/post_install_sub01.sh &
+time make -j1
 make install
 
-cd /tmp
-time tar -jcf ccache_cache.tar.bz2 ccache
+# cd /tmp
+# time tar -jcf ccache_cache.tar.bz2 ccache
 
-base64 -w 0 ccache_cache.tar.bz2 > ccache_cache.tar.bz2.base64.txt
+# base64 -w 0 ccache_cache.tar.bz2 > ccache_cache.tar.bz2.base64.txt
 
-set +x
-base64_text=$(cat /tmp/ccache_cache.tar.bz2.base64.txt)
+# set +x
+# base64_text=$(cat /tmp/ccache_cache.tar.bz2.base64.txt)
 
-psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
-INSERT INTO t_files (file_name, file_base64_text) VALUES ('ccache_cache.gcc.tar.bz2', '${base64_text}');
-__HEREDOC__
-set -x
+# psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+# INSERT INTO t_files (file_name, file_base64_text) VALUES ('ccache_cache.gcc.tar.bz2', '${base64_text}');
+# __HEREDOC__
+# set -x
 
-psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
-INSERT INTO t_files (file_name, file_base64_text) VALUES ('dummy.gcc', 'dummy.gcc');
-__HEREDOC__
-
+# psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+# INSERT INTO t_files (file_name, file_base64_text) VALUES ('dummy.gcc', 'dummy.gcc');
+# __HEREDOC__
 echo ${start_date}
 date
