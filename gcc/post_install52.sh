@@ -6,6 +6,7 @@ date
 start_date=$(date)
 
 chmod 755 start_web.sh
+chmod 755 loggly.sh
 
 gcc --version
 
@@ -74,7 +75,7 @@ wget https://www.samba.org/ftp/ccache/ccache-3.3.4.tar.gz
 tar xf ccache-3.3.4.tar.gz
 cd ccache-3.3.4
 ./configure --help
-./configure --prefix=/tmp/usr
+./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc 2>&1 | ${HOME2}/loggly.sh
 time make -j${parallels}
 make install
 
