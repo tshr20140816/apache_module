@@ -12,6 +12,6 @@
   ,
   "scripts":
   {
-    "post-install-cmd" : "bash ./gcc/post_install51.sh"
+    "post-install-cmd" : "bash ./gcc/post_install52.sh"
   }
 }
