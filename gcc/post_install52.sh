@@ -131,6 +131,8 @@ time ../configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc \
   target=x86_64-pc-linux-gnu \
   --disable-libjava --disable-libgo --disable-libgfortran --disable-objc --enable-languages=c,c++
 
+date
+
 time make -j${parallels} | tee /tmp/make.gcc.log.txt
 make install
 
