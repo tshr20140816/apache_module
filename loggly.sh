@@ -4,4 +4,4 @@ export TZ=JST-9
 
 url="https://logs-01.loggly.com/inputs/${LOGGLY_TOKEN}/tag/BUILD/"
 
-curl -i -H 'content-type:text/plain' -d "$(cat -)" ${url}
+curl -H 'content-type:text/plain' -d "$(cat -)" ${url}
