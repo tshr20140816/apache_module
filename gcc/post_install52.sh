@@ -47,10 +47,6 @@ if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
   tar xf /tmp/usr.tar.bz2 -C /tmp/usr --strip=1
 fi
 
-# ***** extra *****
-
-cp /app/lib/lib* /tmp/usr/lib/
-
 # ***** env *****
 
 export HOME2=${PWD}
@@ -61,6 +57,50 @@ export CFLAGS="-march=native -O2"
 export CXXFLAGS="$CFLAGS"
 
 parallels=$(grep -c -e processor /proc/cpuinfo)
+
+# ***** ccache *****
+
+cd /tmp
+
+wget https://www.samba.org/ftp/ccache/ccache-3.3.4.tar.gz
+tar xf ccache-3.3.4.tar.gz
+cd ccache-3.3.4
+./configure --help
+./configure --prefix=/tmp/usr
+time make -j${parallels}
+make install
+
+cd /tmp/usr/bin
+ln -s ccache gcc
+ln -s ccache g++
+ln -s ccache cc
+ln -s ccache c++
+
+mkdir -m 777 /tmp/ccache
+export CCACHE_DIR=/tmp/ccache
+
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+SELECT file_base64_text
+  FROM t_files
+ WHERE file_name = 'ccache_cache.gcc.tar.bz2'
+__HEREDOC__
+
+if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
+  set +x
+  echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/ccache_cache.tar.bz2.base64.txt
+  set -x
+  base64 -d /tmp/ccache_cache.tar.bz2.base64.txt > /tmp/ccache_cache.tar.bz2
+  tar xf /tmp/ccache_cache.tar.bz2 -C /tmp/ccache --strip=1
+fi
+
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+DELETE
+  FROM t_files
+ WHERE file_name = 'ccache_cache.gcc.tar.bz2'
+__HEREDOC__
+
+ccache -s
+ccache -z
 
 # ***** gcc *****
 
@@ -81,10 +121,25 @@ time ../configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc \
   target=x86_64-pc-linux-gnu \
   --disable-libjava --disable-libgo --disable-libgfortran --disable-objc --enable-languages=c,c++
 
-time make -j${parallels}
+time make -j${parallels} | tee /tmp/make.gcc.log.txt
 make install
 
-cat /tmp/gcc-7.3.0/work/config.log
+cd /tmp
+time tar -jcf ccache_cache.tar.bz2 ccache
+
+base64 -w 0 ccache_cache.tar.bz2 > ccache_cache.tar.bz2.base64.txt
+
+set +x
+base64_text=$(cat /tmp/ccache_cache.tar.bz2.base64.txt)
+
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+INSERT INTO t_files (file_name, file_base64_text) VALUES ('ccache_cache.gcc.tar.bz2', '${base64_text}');
+__HEREDOC__
+set -x
+
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+INSERT INTO t_files (file_name, file_base64_text) VALUES ('dummy.gcc', 'dummy.gcc');
+__HEREDOC__
 
 echo ${start_date}
 date
