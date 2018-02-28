@@ -110,8 +110,6 @@ __HEREDOC__
 ccache -s
 ccache -z
 
-exit
-
 # ***** gcc *****
 
 cd /tmp
