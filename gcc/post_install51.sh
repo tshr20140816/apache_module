@@ -8,9 +8,7 @@ start_date=$(date)
 chmod 755 start_web.sh
 
 gcc --version
-
 whereis gcc
-
 ldd /usr/bin/gcc
 
 # ***** postgresql *****
@@ -41,6 +39,13 @@ SELECT file_name
       ,length(file_base64_text)
   FROM t_files
  ORDER BY file_name
+__HEREDOC__
+cat /tmp/sql_result.txt
+
+psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
+DELETE
+  FROM t_files
+ WHERE file_name='usr_gmp_mpfr_mpc.tar.bz2'
 __HEREDOC__
 cat /tmp/sql_result.txt
 
@@ -92,36 +97,18 @@ cd mpc-1.1.0
 time make -j${parallels}
 make install
 
-# ***** gcc ******
-
-cd /tmp
-
-wget http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-7.3.0/gcc-7.3.0.tar.gz
-
-tar xf gcc-7.3.0.tar.gz
-
-cd gcc-7.3.0
-
-./configure --help
-./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc \
-  --with-gmp==/tmp/usr --with-mpfr=/tmp/usr --with-mpc=/tmp/usr \
-  --disable-multilib
-
-cd /tmp/usr
-
-ls -Ralng
+# *****
 
 cd /tmp
 
 time tar -jcf usr.tar.bz2 usr
-
 base64 -w 0 usr.tar.bz2 > usr.tar.bz2.base64.txt
 
 set +x
 base64_text=$(cat /tmp/usr.tar.bz2.base64.txt)
 
 psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
-INSERT INTO t_files (file_name, file_base64_text) VALUES ('usr.tar.bz2', '${base64_text}');
+INSERT INTO t_files (file_name, file_base64_text) VALUES ('usr_gmp_mpfr_mpc.tar.bz2', '${base64_text}');
 __HEREDOC__
 set -x
 
