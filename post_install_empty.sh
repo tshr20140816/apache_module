@@ -9,8 +9,8 @@ chmod 755 start_web.sh
 
 cd www
 
-# gzip test.css
-# rm test.css
+gzip test.css
+rm test.css
 
 cd /tmp
 
