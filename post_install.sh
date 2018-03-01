@@ -226,6 +226,8 @@ cd out
 make -j$(grep -c -e processor /proc/cpuinfo)
 make install &
 
+ldd /tmp/usr/bin/brotli
+
 # ***** apr *****
 
 cd /tmp
@@ -358,6 +360,9 @@ cp /tmp/usr2/modules/mod_socache_shmcb.so ${HOME2}/www/
 ccache -s
 
 ls -lang
+
+
+ldd /tmp/usr/bin/brotli
 
 echo ${start_date}
 date
