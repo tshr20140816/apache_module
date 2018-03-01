@@ -35,9 +35,4 @@ ldd ./mod_proxy_http2.so
 ldd ./mod_brotli.so
 ldd ./mod_cache_disk.so
 
-pushd www
-gzip test.css
-rm -f test.css
-popd
-
 vendor/bin/heroku-php-apache2 -C apache.conf www
