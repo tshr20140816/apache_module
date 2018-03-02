@@ -12,6 +12,6 @@
   ,
   "scripts":
   {
-    "post-install-cmd" : "bash ./post_install_empty.sh"
+    "post-install-cmd" : "bash ./utils//post_install_0303.sh.sh"
   }
 }
