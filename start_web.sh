@@ -35,4 +35,9 @@ ls -lang
 # ldd ./mod_brotli.so
 # ldd ./mod_cache_disk.so
 
+pushd www
+wget https://git.tt-rss.org/fox/tt-rss/raw/master/css/tt-rss.less
+mv tt-rss.less tt-rss.css
+popd
+
 vendor/bin/heroku-php-apache2 -C apache.conf www
