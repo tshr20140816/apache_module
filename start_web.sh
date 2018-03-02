@@ -38,8 +38,8 @@ ls -lang
 pushd www
 wget https://git.tt-rss.org/fox/tt-rss/raw/master/css/tt-rss.less
 mv tt-rss.less tt-rss.css
-# gzip tt-rss.css
-# rm tt-rss.css
+gzip tt-rss.css
+rm tt-rss.css
 popd
 
 vendor/bin/heroku-php-apache2 -C apache.conf www
