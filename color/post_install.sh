@@ -13,7 +13,7 @@ git clone --depth 1 --recursive https://github.com/kornelski/pngquant.git
 
 cd pngquant
 ./configure --help
-./configure --perfix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc
+./configure --prefix=/tmp/usr
 time make -j2
 make install
 
