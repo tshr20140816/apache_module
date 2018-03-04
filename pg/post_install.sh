@@ -15,6 +15,8 @@ tar xf pgadmin4-2.1.tar.gz
 
 cd pgadmin4-2.1
 
+time make -j2
+
 ls -lang
 
 
