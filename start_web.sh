@@ -18,8 +18,10 @@ ls -lang
 export LD_LIBRARY_PATH=/tmp/usr/lib
 
 mkdir -p /tmp/usr/lib
-cp ./.heroku/php/libexec/libpython2.7.so.1.0 /tmp/usr/lib/
+cp ./libpython2.7.so.1.0 /tmp/usr/lib/
+cp ./mod_wsgi.so /tmp/usr/lib
 
+ldd /tmp/usr/lib/mod_wsgi.so
 
 # chmod +x libbrotlicommon.so.1
 # chmod +x libbrotlienc.so.1
@@ -39,11 +41,11 @@ cp ./.heroku/php/libexec/libpython2.7.so.1.0 /tmp/usr/lib/
 # ldd ./mod_brotli.so
 # ldd ./mod_cache_disk.so
 
-pushd www
-wget https://git.tt-rss.org/fox/tt-rss/raw/master/css/tt-rss.less
-mv tt-rss.less tt-rss.css
-gzip tt-rss.css
-rm tt-rss.css
-popd
+# pushd www
+# wget https://git.tt-rss.org/fox/tt-rss/raw/master/css/tt-rss.less
+# mv tt-rss.less tt-rss.css
+# gzip tt-rss.css
+# rm tt-rss.css
+# popd
 
 vendor/bin/heroku-php-apache2 -C apache.conf www
