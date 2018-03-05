@@ -44,6 +44,10 @@ cd pgadmin4-2.1
 
 ls -Rlang
 
+cd web
+
+python setup.py
+
 echo ${start_date}
 date
 
