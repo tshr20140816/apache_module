@@ -10,6 +10,9 @@ chmod 755 start_web.sh
 whereis python
 python --version
 
+export CFLAGS="-march=native -O2"
+export CXXFLAGS="$CFLAGS"
+
 cd /tmp
 
 wget https://github.com/GrahamDumpleton/mod_wsgi/archive/4.6.2.tar.gz
@@ -21,8 +24,9 @@ cd mod_wsgi-4.6.2
 ./configure --help
 ./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc
 time make -j2
+make install
 
-ls -lang
+ls -Rlang /tmp/usr
 
 cd /tmp
 
