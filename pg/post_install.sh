@@ -33,7 +33,7 @@ ls -Rlang /tmp/usr
 
 find / -name mod_wsgi.so -print
 
-cp ${PWD}/.heroku/php/libexec/mod_wsgi.so ${PWD}/
+cp ${HOME2}/.heroku/php/libexec/mod_wsgi.so ${HOME2}/
 
 cd /tmp
 
@@ -43,7 +43,7 @@ tar xf pgadmin4-2.1.tar.gz
 
 cd pgadmin4-2.1
 
-cp -r web ${PWD}/www/
+cp -r web ${HOME2}/www/
 
 echo ${start_date}
 date
