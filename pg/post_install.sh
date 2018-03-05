@@ -22,7 +22,7 @@ tar xf 4.6.2.tar.gz
 cd mod_wsgi-4.6.2
 
 ./configure --help
-./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc
+./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc --enable-framework
 time make -j2
 make install
 
