@@ -12,6 +12,12 @@ python --version
 
 find / -name libpython2.7.so.1.0 -print
 
+ldd /usr/lib/x86_64-linux-gnu/libpython2.7.so.1.0
+
+cp /usr/lib/x86_64-linux-gnu/libpython2.7.so.1.0 ./.heroku/php/libexec/
+
+ls -lang ./.heroku/php/libexec/libpython2.7.so.1.0
+
 export CFLAGS="-march=native -O2"
 export CXXFLAGS="$CFLAGS"
 
@@ -31,6 +37,8 @@ make install
 ls -Rlang /tmp/usr
 
 find / -name mod_wsgi.so -print
+
+cp /usr/lib/x86_64-linux-gnu/libpython2.7.so.1.0
 
 cd /tmp
 
