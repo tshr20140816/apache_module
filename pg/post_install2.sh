@@ -17,8 +17,8 @@ cd phppgadmin
 
 cat classes/database/Connection.php
 
-cp -f ./Connection.php classes/database/Connection.php
-cp config.inc.php conf/config.inc.php
+cp -f ${PWD}/Connection.php classes/database/Connection.php
+cp ${PWD}/config.inc.php conf/config.inc.php
 
 echo ${start_date}
 date
