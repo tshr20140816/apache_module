@@ -29,8 +29,6 @@ cd mod_wsgi-4.6.2
 time make -j2
 make install
 
-ls -Rlang /tmp/usr
-
 find / -name mod_wsgi.so -print
 
 cp ${HOME2}/.heroku/php/libexec/mod_wsgi.so ${HOME2}/
@@ -43,6 +41,8 @@ tar xf pgadmin4-2.1.tar.gz
 rm pgadmin4-2.1.tar.gz
 
 cd pgadmin4-2.1
+
+ls -Rlang
 
 echo ${start_date}
 date
