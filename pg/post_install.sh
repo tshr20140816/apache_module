@@ -28,6 +28,8 @@ make install
 
 ls -Rlang /tmp/usr
 
+find / -name mod_wsgi.so -print
+
 cd /tmp
 
 # wget https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v2.1/source/pgadmin4-2.1.tar.gz
