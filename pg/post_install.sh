@@ -46,6 +46,7 @@ ls -Rlang
 
 cd web
 
+pip install flask
 python setup.py
 
 echo ${start_date}
