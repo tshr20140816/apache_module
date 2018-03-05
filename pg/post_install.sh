@@ -10,6 +10,8 @@ chmod 755 start_web.sh
 whereis python
 python --version
 
+find / -name libpython2.7.so.1.0 -print
+
 export CFLAGS="-march=native -O2"
 export CXXFLAGS="$CFLAGS"
 
