@@ -17,5 +17,7 @@ cd phppgadmin
 
 cat classes/database/Connection.php
 
+cp -f ./Connection.php classes/database/Connection.php
+
 echo ${start_date}
 date
