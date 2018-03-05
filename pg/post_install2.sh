@@ -15,7 +15,7 @@ git clone --depth 1 https://github.com/phppgadmin/phppgadmin.git
 
 cd phppgadmin
 
-ls -lang
+cat classes/database/Connection.php
 
 echo ${start_date}
 date
