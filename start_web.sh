@@ -7,7 +7,8 @@ export TZ=JST-9
 httpd -V
 httpd -M
 php --version
-whereis php
+python --version
+whereis python
 cat /proc/version
 curl --version
 gcc --version
