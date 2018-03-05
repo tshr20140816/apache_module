@@ -15,7 +15,11 @@ printenv
 
 ls -lang
 
-# export LD_LIBRARY_PATH=/tmp/usr/lib
+export LD_LIBRARY_PATH=/tmp/usr/lib
+
+mkdir -p /tmp/usr/lib
+cp ./.heroku/php/libexec/libpython2.7.so.1.0 /tmp/usr/lib/
+
 
 # chmod +x libbrotlicommon.so.1
 # chmod +x libbrotlienc.so.1
