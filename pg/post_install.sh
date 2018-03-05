@@ -16,6 +16,12 @@ wget https://github.com/GrahamDumpleton/mod_wsgi/archive/4.6.2.tar.gz
 
 tar xf 4.6.2.tar.gz
 
+cd mod_wsgi-4.6.2
+
+./configure --help
+./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc
+time make -j2
+
 ls -lang
 
 cd /tmp
