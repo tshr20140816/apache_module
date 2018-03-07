@@ -12,6 +12,6 @@
   ,
   "scripts":
   {
-    "post-install-cmd" : "bash ./pg/post_install2.sh"
+    "post-install-cmd" : "bash ./post_install.sh"
   }
 }
