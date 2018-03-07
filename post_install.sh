@@ -334,6 +334,7 @@ wait
 
 # ls -Rlang /tmp/usr
 # ls -Rlang /tmp/usr2
+ls -lang /tmp/usr2/modules/
 
 cp /tmp/usr/bin/brotli ${HOME2}/
 cp /tmp/usr/lib/libnghttp2.so.14 ${HOME2}/
