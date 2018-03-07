@@ -310,13 +310,13 @@ wait
 ./configure --help
 ./configure --prefix=/tmp/usr2 \
  --with-apr=/tmp/usr --enable-ssl --enable-http2 --enable-proxy --enable-proxy-http2 --with-nghttp2=/tmp/usr \
- --enable-brotli --with-brotli=/tmp/usr --enable-mods-shared="few cache cache_disk cache_socache socache_shmcb"
+ --enable-brotli --with-brotli=/tmp/usr --enable-mods-shared="few file_cache cache cache_disk cache_socache socache_shmcb"
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install &
 
 cd /tmp
 time tar -jcf ccache_cache.tar.bz2 ccache
-time tar -cf ccache_cache2.tar.gz --use-compress-prog=pbzip2 ccache
+# time tar -cf ccache_cache2.tar.gz --use-compress-prog=pbzip2 ccache
 
 ls -lang
 
