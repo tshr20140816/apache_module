@@ -15,6 +15,7 @@ wget https://prdownloads.sourceforge.net/tcl/tcl8.6.8-src.tar.gz
 tar xf tcl8.6.8-src.tar.gz
 cd tcl*
 pwd
+cd unix
 ls -lang
 ./configure --help
 ./configure --prefix=/tmp/usr
