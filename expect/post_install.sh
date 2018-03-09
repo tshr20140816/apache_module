@@ -22,7 +22,7 @@ cd unix
 ls -lang
 ./configure --help
 ./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc
-time make
+time make -j2
 make install
 
 cd /tmp
@@ -34,7 +34,7 @@ tar xf expect5.45.4.tar.gz
 cd expect5.45.4
 ./configure --help
 ./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc
-time make
+time make -j2
 make install
 
 cd /tmp/usr
