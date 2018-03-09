@@ -21,7 +21,7 @@ pwd
 cd unix
 ls -lang
 ./configure --help
-./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc
+./configure --prefix=/tmp/usr --mandir=/tmp/man
 time make -j2
 make install
 
