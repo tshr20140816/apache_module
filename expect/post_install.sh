@@ -14,6 +14,7 @@ wget https://jaist.dl.sourceforge.net/project/expect/Expect/5.45.4/expect5.45.4.
 tar xf expect5.45.4.tar.gz
 
 cd expect5.45.4
+./configure --help
 ./configure --prefix=/tmp/usr
 time make
 make install
