@@ -65,7 +65,7 @@ ldd ./bin/expect
 
 /tmp/usr/bin/expect -c "
 set timeout 5
-set exp_internal 1
+exp_internal 1
 spawn /tmp/heroku-cli/bin/heroku info ${APP_NAME}
 expect \"Email:\"
 send \"${PARAM1}\n\"
