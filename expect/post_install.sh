@@ -38,7 +38,7 @@ tar xf expect5.45.4.tar.gz
 
 cd expect5.45.4
 ./configure --help
-./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc --enable-64bit --enable-shared=no
+./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc --enable-shared=no
 time make -j2
 make install
 
