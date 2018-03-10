@@ -2,7 +2,7 @@
 
 set -x
 
-expect -c "
+/tmp/usr/bin/expect -c "
 set timeout 5
 spawn /app/heroku-cli/bin/heroku info ${APP_NAME}
 expect \"Email:\"
