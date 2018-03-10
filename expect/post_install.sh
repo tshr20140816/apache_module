@@ -70,6 +70,7 @@ expect \"Email:\"
 send \"${PARAM1}\n\"
 expect \"Password:\"
 send \"${PARAM2}\n\"
+expect \"$\"
 exit 0
 "
 
