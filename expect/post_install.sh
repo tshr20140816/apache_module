@@ -38,7 +38,7 @@ tar xf expect5.45.4.tar.gz
 
 cd expect5.45.4
 ./configure --help
-./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc --enable-64bit
+./configure --prefix=/tmp/usr --mandir=/tmp/man --docdir=/tmp/doc --enable-64bit --enable-shared=no
 time make -j2
 make install
 
@@ -58,6 +58,8 @@ tar xf heroku.tar.gz -C ${HOME2}/heroku-cli --strip=1
 cd /tmp/usr
 
 ls -Rlang
+
+ldd ./bin/expect
 
 echo ${start_date}
 date
