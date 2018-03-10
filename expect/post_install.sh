@@ -49,8 +49,10 @@ cd /tmp
 wget https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-linux-x64.tar.gz -O heroku.tar.gz
 
 mkdir -m 777 ${HOME2}/heroku-cli
+mkdir -m 777 /tmp/heroku-cli
 
-tar xf heroku.tar.gz -C ${HOME2}/heroku-cli --strip=1
+# tar xf heroku.tar.gz -C ${HOME2}/heroku-cli --strip=1
+tar xf heroku.tar.gz -C /tmp/heroku-cli --strip=1
 
 
 # *****
@@ -60,6 +62,16 @@ cd /tmp/usr
 ls -Rlang
 
 ldd ./bin/expect
+
+/tmp/usr/bin/expect -c "
+set timeout 5
+spawn /tmp/heroku-cli/bin/heroku info ${APP_NAME}
+expect \"Email:\"
+send \"${PARAM1}\n\"
+expect \"Password:\"
+send \"${PARAM2}\n\"
+exit 0
+"
 
 echo ${start_date}
 date
