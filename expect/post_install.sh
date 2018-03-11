@@ -58,7 +58,8 @@ spawn /tmp/heroku-cli/bin/heroku info ${APP_NAME}
 expect \"Ema\"
 send \"${PARAM1}\n\"
 expect \"Password:\"
-send \"${PARAM2}\n\"
+send \"${PARAM2}\"
+send \"\n\"
 expect \"Web\"
 interact
 exit 0
