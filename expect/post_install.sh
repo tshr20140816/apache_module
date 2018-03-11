@@ -59,6 +59,7 @@ send \"${PARAM1}\n\"
 expect \"Password:\"
 send \"${PARAM2}\n\"
 expect \"$\"
+exit 0
 "
   cat /tmp/log_expext.txt
 
@@ -137,6 +138,7 @@ send \"${PARAM1}\n\"
 expect \"Password:\"
 send \"${PARAM2}\n\"
 expect \"$\"
+exit 0
 "
 
 echo ${start_date}
