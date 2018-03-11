@@ -59,8 +59,7 @@ expect \"Ema\"
 send \"${PARAM1}\n\"
 expect \"Password:\"
 send \"${PARAM2}\"
-send \"\n\"
-expect \" \"
+log_user 0
 send \"\n\"
 expect \"Web\"
 interact
