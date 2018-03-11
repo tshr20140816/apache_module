@@ -44,6 +44,12 @@ if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
   base64 -d /tmp/usr.tar.bz2.base64.txt > /tmp/usr.tar.bz2
   tar xf /tmp/usr.tar.bz2 -C /tmp/usr --strip=1
   
+  cd /tmp
+  wget https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-linux-x64.tar.gz -O heroku.tar.gz
+  mkdir -m 777 /tmp/heroku-cli
+
+  tar xf heroku.tar.gz -C /tmp/heroku-cli --strip=1
+  
   /tmp/usr/bin/expect -c "
 set timeout 5
 exp_internal 1
