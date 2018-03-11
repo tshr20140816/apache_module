@@ -60,6 +60,8 @@ send \"${PARAM1}\n\"
 expect \"Password:\"
 send \"${PARAM2}\"
 send \"\n\"
+expect \" \"
+send \"\n\"
 expect \"Web\"
 interact
 exit 0
