@@ -54,7 +54,7 @@ if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
 set timeout 30
 exp_internal 1
 spawn /tmp/heroku-cli/bin/heroku info ${APP_NAME}
-expect \"Email:\"
+expect \"Ema\"
 send \"${PARAM1}\n\"
 expect \"Password:\"
 send \"${PARAM2}\n\"
