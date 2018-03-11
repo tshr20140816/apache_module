@@ -51,7 +51,7 @@ if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
   tar xf heroku.tar.gz -C /tmp/heroku-cli --strip=1
   
   /tmp/usr/bin/expect -c "
-set timeout 10
+set timeout 30
 exp_internal 1
 spawn /tmp/heroku-cli/bin/heroku info ${APP_NAME}
 expect \"Email:\"
