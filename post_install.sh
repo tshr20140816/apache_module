@@ -309,7 +309,8 @@ wait
 
 ./configure --help
 ./configure --prefix=/tmp/usr2 \
- --with-apr=/tmp/usr --enable-ssl --enable-http2 --enable-proxy --enable-proxy-http2 --with-nghttp2=/tmp/usr \
+ --with-apr=/tmp/usr --enable-ssl --enable-http2 --enable-proxy --enable-proxy-http2 --enable-logio \
+ --with-nghttp2=/tmp/usr \
  --enable-brotli --with-brotli=/tmp/usr --enable-mods-shared="few file_cache cache cache_disk cache_socache socache_shmcb"
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install &
@@ -348,6 +349,7 @@ cp /tmp/usr2/modules/mod_cache_socache.so ${HOME2}/
 cp /tmp/usr2/modules/mod_cache_disk.so ${HOME2}/
 cp /tmp/usr2/modules/mod_socache_shmcb.so ${HOME2}/
 cp /tmp/usr2/modules/mod_file_cache.so ${HOME2}/
+cp /tmp/usr2/modules/mod_logio.so ${HOME2}/
 
 cp /tmp/usr/bin/brotli ${HOME2}/www/
 cp /tmp/usr/lib/libnghttp2.so.14 ${HOME2}/www/
@@ -361,6 +363,7 @@ cp /tmp/usr2/modules/mod_cache_socache.so ${HOME2}/www/
 cp /tmp/usr2/modules/mod_cache_disk.so ${HOME2}/www/
 cp /tmp/usr2/modules/mod_socache_shmcb.so ${HOME2}/www/
 cp /tmp/usr2/modules/mod_file_cache.so ${HOME2}/www/
+cp /tmp/usr2/modules/mod_logio.so ${HOME2}/www/
 
 ccache -s
 
