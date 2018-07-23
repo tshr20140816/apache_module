@@ -66,6 +66,8 @@ wget http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.34.tar.gz &
 # cd ccache-3.3.4
 wget https://github.com/ccache/ccache/archive/v3.4.2.tar.gz
 tar xf v3.4.2.tar.gz
+ls -lang
+exit
 cd v3.4.2
 ./configure --help
 ./configure --prefix=/tmp/usr
