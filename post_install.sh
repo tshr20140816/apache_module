@@ -60,14 +60,11 @@ git clone --depth 1 https://github.com/google/brotli &
 wget http://ftp.jaist.ac.jp/pub/apache//apr/apr-1.6.3.tar.bz2 &
 wget http://ftp.jaist.ac.jp/pub/apache//apr/apr-util-1.6.1.tar.bz2 &
 wget http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.34.tar.gz &
-wait
 
 wget https://github.com/ccache/ccache/archive/v3.4.2.tar.gz
 tar xf v3.4.2.tar.gz
 cd ccache-3.4.2
 bash autogen.sh
-ls -lang
-exit
 ./configure --help
 ./configure --prefix=/tmp/usr
 time make -j$(grep -c -e processor /proc/cpuinfo)
