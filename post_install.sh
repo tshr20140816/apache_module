@@ -65,6 +65,7 @@ wait
 wget https://github.com/ccache/ccache/archive/v3.4.2.tar.gz
 tar xf v3.4.2.tar.gz
 cd ccache-3.4.2
+bash autogen.sh
 ls -lang
 exit
 ./configure --help
