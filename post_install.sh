@@ -168,9 +168,9 @@ make install &
 
 cd /tmp
 
-# wget https://github.com/nghttp2/nghttp2/releases/download/v1.30.0/nghttp2-1.30.0.tar.xz
-tar xf nghttp2-1.30.0.tar.xz
-cd nghttp2-1.30.0
+# wget https://github.com/nghttp2/nghttp2/releases/download/v1.32.0/nghttp2-1.32.0.tar.xz
+tar xf nghttp2-1.32.0.tar.xz
+cd nghttp2-1.32.0
 
 psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
 SELECT file_base64_text
@@ -210,8 +210,8 @@ make install &
 
 cd /tmp
 
-# wget https://cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.tar.gz
-tar xf cmake-3.10.2-Linux-x86_64.tar.gz -C ./usr --strip=1 
+# wget https://cmake.org/files/v3.12/cmake-3.12.0-Linux-x86_64.tar.gz
+tar xf cmake-3.12.0-Linux-x86_64.tar.gz -C ./usr --strip=1 
 
 # ***** brotli *****
 
@@ -301,9 +301,9 @@ make install &
 
 cd /tmp
 
-# wget http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.29.tar.gz
-tar xf httpd-2.4.29.tar.gz
-cd httpd-2.4.29
+# wget http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.34.tar.gz
+tar xf httpd-2.4.34.tar.gz
+cd httpd-2.4.34
 
 wait
 
