@@ -62,17 +62,9 @@ wget http://ftp.jaist.ac.jp/pub/apache//apr/apr-util-1.6.1.tar.bz2 &
 wget http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.34.tar.gz &
 wait
 
-git clone --depth 1 https://github.com/asciidoc/asciidoc.git
-cd asciidoc
-autoconf
-./configure --help
-./configure --prefix=/tmp/usr
-time make -j$(grep -c -e processor /proc/cpuinfo)
-make install
-
-wget https://github.com/ccache/ccache/archive/v3.4.2.tar.gz
-tar xf v3.4.2.tar.gz
-cd ccache-3.4.2
+wget https://github.com/ccache/ccache/archive/v3.3.6.tar.gz
+tar xf v3.3.6.tar.gz
+cd ccache-3.3.6
 bash autogen.sh
 ./configure --help
 ./configure --prefix=/tmp/usr
