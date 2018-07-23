@@ -82,7 +82,7 @@ export CCACHE_DIR=/tmp/ccache
 psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
 DELETE
   FROM t_files
- WHERE file_name = 'ccache_cache.tar.bz2'
+ WHERE file_name = 'xxx_ccache_cache.tar.bz2'
 __HEREDOC__
 
 psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
