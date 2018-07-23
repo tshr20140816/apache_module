@@ -61,6 +61,7 @@ wget http://ftp.jaist.ac.jp/pub/apache//apr/apr-1.6.3.tar.bz2 &
 wget http://ftp.jaist.ac.jp/pub/apache//apr/apr-util-1.6.1.tar.bz2 &
 wget http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.34.tar.gz &
 
+wait
 # wget https://www.samba.org/ftp/ccache/ccache-3.3.4.tar.gz
 # tar xf ccache-3.3.4.tar.gz
 # cd ccache-3.3.4
