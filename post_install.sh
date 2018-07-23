@@ -7,6 +7,8 @@ start_date=$(date)
 
 chmod 777 start_web.sh
 
+cat /proc/cpuinfo
+
 printenv
 
 postgres_user=$(echo ${DATABASE_URL} | awk -F':' '{print $2}' | sed -e 's/\///g')
