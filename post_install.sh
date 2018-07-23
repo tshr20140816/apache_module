@@ -61,15 +61,9 @@ wget http://ftp.jaist.ac.jp/pub/apache//apr/apr-1.6.3.tar.bz2 &
 wget http://ftp.jaist.ac.jp/pub/apache//apr/apr-util-1.6.1.tar.bz2 &
 wget http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.34.tar.gz &
 
-wait
-# wget https://www.samba.org/ftp/ccache/ccache-3.3.4.tar.gz
-# tar xf ccache-3.3.4.tar.gz
-# cd ccache-3.3.4
 wget https://github.com/ccache/ccache/archive/v3.4.2.tar.gz
 tar xf v3.4.2.tar.gz
-ls -lang
-exit
-cd v3.4.2
+cd ccache-3.4.2
 ./configure --help
 ./configure --prefix=/tmp/usr
 time make -j$(grep -c -e processor /proc/cpuinfo)
