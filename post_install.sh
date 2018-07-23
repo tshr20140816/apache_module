@@ -55,11 +55,12 @@ openssl version
 wget https://c-ares.haxx.se/download/c-ares-1.13.0.tar.gz &
 wget http://www.digip.org/jansson/releases/jansson-2.11.tar.bz2 &
 wget https://github.com/nghttp2/nghttp2/releases/download/v1.32.0/nghttp2-1.32.0.tar.xz &
-wget https://cmake.org/files/v3.12/cmake-3.12.0-Linux-x86_64.tar.gz &
+# wget https://cmake.org/files/v3.12/cmake-3.12.0-Linux-x86_64.tar.gz &
 git clone --depth 1 https://github.com/google/brotli &
 wget http://ftp.jaist.ac.jp/pub/apache//apr/apr-1.6.3.tar.bz2 &
 wget http://ftp.jaist.ac.jp/pub/apache//apr/apr-util-1.6.1.tar.bz2 &
 wget http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.34.tar.gz &
+wait
 
 wget https://github.com/ccache/ccache/archive/v3.4.2.tar.gz
 tar xf v3.4.2.tar.gz
@@ -69,6 +70,10 @@ bash autogen.sh
 ./configure --prefix=/tmp/usr
 time make -j$(grep -c -e processor /proc/cpuinfo)
 make install
+
+ls -lang /tmp/usr/bin
+
+exit
 
 cd /tmp/usr/bin
 ln -s ccache gcc
