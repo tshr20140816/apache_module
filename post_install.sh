@@ -62,9 +62,9 @@ wget http://ftp.jaist.ac.jp/pub/apache//apr/apr-util-1.6.1.tar.bz2 &
 wget http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.34.tar.gz &
 wait
 
-wget https://github.com/ccache/ccache/archive/v3.3.6.tar.gz
-tar xf v3.3.6.tar.gz
-cd ccache-3.3.6
+wget https://github.com/ccache/ccache/archive/v3.3.4.tar.gz
+tar xf v3.3.4.tar.gz
+cd ccache-3.3.4
 bash autogen.sh
 ./configure --help
 ./configure --prefix=/tmp/usr
