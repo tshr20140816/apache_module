@@ -52,7 +52,8 @@ cd /tmp
 
 openssl version
 
-wget https://c-ares.haxx.se/download/c-ares-1.13.0.tar.gz &
+# wget https://c-ares.haxx.se/download/c-ares-1.13.0.tar.gz &
+wget https://c-ares.haxx.se/download/c-ares-1.14.0.tar.gz &
 wget http://www.digip.org/jansson/releases/jansson-2.11.tar.bz2 &
 wget https://github.com/nghttp2/nghttp2/releases/download/v1.32.0/nghttp2-1.32.0.tar.xz &
 wget https://cmake.org/files/v3.12/cmake-3.12.0-Linux-x86_64.tar.gz &
@@ -107,9 +108,11 @@ wait
 
 cd /tmp
 
-# wget https://c-ares.haxx.se/download/c-ares-1.13.0.tar.gz
-tar xf c-ares-1.13.0.tar.gz
-target=c-ares-1.13.0
+# wget https://c-ares.haxx.se/download/c-ares-1.14.0.tar.gz
+# tar xf c-ares-1.13.0.tar.gz
+# target=c-ares-1.13.0
+tar xf c-ares-1.14.0.tar.gz
+target=c-ares-1.14.0
 cd ${target}
 
 psql -U ${postgres_user} -d ${postgres_dbname} -h ${postgres_server} > /tmp/sql_result.txt << __HEREDOC__
