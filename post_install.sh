@@ -66,6 +66,7 @@ wget https://github.com/ccache/ccache/archive/v3.3.4.tar.gz
 tar xf v3.3.4.tar.gz
 cd ccache-3.3.4
 bash autogen.sh
+cat configure
 ./configure --help
 ./configure --prefix=/tmp/usr
 time make -j$(grep -c -e processor /proc/cpuinfo)
