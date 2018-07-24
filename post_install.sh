@@ -287,7 +287,7 @@ wait
 ./configure --help
 if [ $(cat /tmp/sql_result.txt | grep -c '(1 row)') -eq 1 ]; then
   set +x
-  echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.apr-util-1.6.1.base64.txt
+  echo $(cat /tmp/sql_result.txt | head -n 3 | tail -n 1) > /tmp/config.cache.apr-util-1.6.1.base64.txt
   set -x
   base64 -d /tmp/config.cache.apr-util-1.6.1.base64.txt > /tmp/config.cache.apr-util-1.6.1
   CONFIG_SITE="/tmp/config.cache.apr-util-1.6.1" ./configure --prefix=/tmp/usr --with-apr=/tmp/usr
