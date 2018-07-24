@@ -62,8 +62,8 @@ wget http://ftp.jaist.ac.jp/pub/apache//apr/apr-util-1.6.1.tar.bz2 &
 wget http://ftp.jaist.ac.jp/pub/apache//httpd/httpd-2.4.34.tar.gz &
 wait
 
-wget https://www.samba.org/ftp/ccache/ccache-3.4.2.tar.gz
-tar xf ccache-3.4.2.tar.gz
+wget https://www.samba.org/ftp/ccache/ccache-3.4.2.tar.xz
+tar xf ccache-3.4.2.tar.xz
 cd ccache-3.4.2
 ./configure --help
 ./configure --prefix=/tmp/usr
